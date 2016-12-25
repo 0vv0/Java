@@ -7,10 +7,6 @@ import com.sun.org.apache.xpath.internal.SourceTree;
  */
 public class Runner {
     public static void main(String[] args) {
-        //Создать объект класса Планета, используя классы Материк, Океан, Остров.
-        // Методы: вывести на консоль название материка, планеты, количество материков.
-
-
         Planet earth = new Planet();
         Area england = new Area("England", IArea.Type.Island);
         Area africa = new Area("Africa", IArea.Type.Continent);
