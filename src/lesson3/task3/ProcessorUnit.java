@@ -14,7 +14,7 @@ public class ProcessorUnit implements IPU {
     ProcessorUnit(String name, IPU.Type type) {
         if(name==null){throw new IllegalArgumentException("Name is missed");}
         this.name = name;
-        this.theType = Type.CPU;
+        this.theType = type;
     }
 
     @Override
