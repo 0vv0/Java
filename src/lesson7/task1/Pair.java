@@ -12,11 +12,11 @@ public class Pair<L, R> {
         this.right = right;
     }
 
-    L getLeft(){
+    public L getLeft(){
         return left;
     }
 
-    R getRight(){
+    public R getRight(){
         return right;
     }
 

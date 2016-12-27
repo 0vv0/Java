@@ -3,7 +3,7 @@ package lesson1.task1.A;
 /**
  * Created by Oleksii.Sergiienko on 18.12.2016.
  */
-public class Number {
+class Number {
     private String theNumber;
     Number(int x){
         theNumber = String.valueOf(x);
