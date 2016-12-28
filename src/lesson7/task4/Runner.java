@@ -32,7 +32,7 @@ public class Runner {
         persons.add(new Person("Peter", 15, Person.Sex.Male));
         persons.add(new Person("Peter", 18, Person.Sex.Male));
         persons.add(new Person("Igor", 17, Person.Sex.Male));
-        persons.add(new Person("Alex", 17, Person.Sex.Male));
+        persons.add(new Person("Peter", 17, Person.Sex.Male));
 
         System.out.printf(persons.toString());
 

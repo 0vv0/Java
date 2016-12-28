@@ -8,7 +8,7 @@ public class Person implements Comparable<Person>{
     private final int age;
     private final Sex sex;
 
-    enum Sex{
+    public enum Sex{
         Male, Female
     }
 
