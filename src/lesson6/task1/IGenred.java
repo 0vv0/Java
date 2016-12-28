@@ -5,7 +5,7 @@ package lesson6.task1;
  */
 public interface IGenred {
     enum Genre{
-        UnKnown, Comedy, Fight, Tragedy, Fantastic, FairyTale, Horros, THRILLER
+        UnKnown, Comedy, Fight, Tragedy, Fantastic, FairyTale, Horror, THRILLER
     }
 
     Genre getGenre();
