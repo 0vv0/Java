@@ -40,8 +40,8 @@ public class Films {
         return this;
     }
 
-    List<Film> getByGenre(Genre genre) {
-        List<Film> list = new ArrayList<Film>();
+    List<Film> getByGenre(IGenred.Genre genre) {
+        List<Film> list = new ArrayList<>();
         films
                 .stream()
                 .filter(x -> x.getGenre() == genre)
@@ -50,7 +50,7 @@ public class Films {
     }
 
     List<Film> getByYears(int from, int to) {
-        List<Film> list = new ArrayList<Film>();
+        List<Film> list = new ArrayList<>();
         films
                 .stream()
                 .filter(x -> x.getYear() >= from && x.getYear() <= to)
@@ -59,7 +59,7 @@ public class Films {
     }
 
     List<Film> getByActor(String actorName) {
-        List<Film> list = new ArrayList<Film>();
+        List<Film> list = new ArrayList<>();
         films
                 .stream()
                 .filter(x -> x.isPlayActor(actorName))
@@ -68,7 +68,7 @@ public class Films {
     }
 
     List<Film> getByActors(String... actorsNames) {
-        List<Film> list = new ArrayList<Film>();
+        List<Film> list = new ArrayList<>();
         films
                 .stream()
                 .filter(x -> x.isPlayActors(actorsNames))

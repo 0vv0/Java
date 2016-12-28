@@ -2,21 +2,20 @@ package lesson6.task1;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 /**
  * Created by Oleksii.Sergiienko on 12/26/2016.
  */
-public class Film {
+public class Film implements IGenred{
 //            1. Film: название, год выпуска, список имен актеров, список жанров.
 
     private final String theName;
     private final int theYear;
     private List<String> actors = new ArrayList<>();
-    private final Genre theGenre;
+    private final IGenred.Genre theGenre;
 
-    public Film(String name, int year, Genre genre) {
+    public Film(String name, int year, IGenred.Genre genre) {
         isCorrect(name, year);
         this.theName = name;
         this.theYear = year;
@@ -24,15 +23,15 @@ public class Film {
     }
 
     public Film(String name, int year) {
-        this(name, year, Genre.UnKnown);
+        this(name, year, IGenred.Genre.UnKnown);
     }
 
     public Film(String name) {
-        this(name, 0, Genre.UnKnown);
+        this(name, 0, IGenred.Genre.UnKnown);
     }
 
 
-    public Genre getGenre() {
+    public IGenred.Genre getGenre() {
         return theGenre;
     }
 

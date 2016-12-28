@@ -13,17 +13,17 @@ public class FilmsRunner {
     public static void main(String[] args) {
         Films filmList = new Films();
 
-        Film zve5 = new Film("Star Wars. Episode 5", 1990, Genre.Fantastic);
-        Film zve6 = new Film("Star Wars. Episode 6", 1992, Genre.Fantastic);
-        Film zve3 = new Film("Star Wars. Episode 3", 1994, Genre.Fantastic);
-        Film zve1 = new Film("Star Wars. Episode 1", 1999, Genre.Fantastic);
+        Film zve5 = new Film("Star Wars. Episode 5", 1990, IGenred.Genre.Fantastic);
+        Film zve6 = new Film("Star Wars. Episode 6", 1992, IGenred.Genre.Fantastic);
+        Film zve3 = new Film("Star Wars. Episode 3", 1994, IGenred.Genre.Fantastic);
+        Film zve1 = new Film("Star Wars. Episode 1", 1999, IGenred.Genre.Fantastic);
 
-        Film scaryMovie = new Film("Scary movie", 1980, Genre.Horros);
+        Film scaryMovie = new Film("Scary movie", 1980, IGenred.Genre.Horror);
 
         filmList.add(zve1).add(zve3).add(zve5).add(zve6).add(scaryMovie);
 
         System.out.println(filmList);
-        filmList.getByGenre(Genre.Fantastic).stream().forEach(x-> System.out.println(x));
+        filmList.getByGenre(IGenred.Genre.Fantastic).forEach(x-> System.out.println(x));
     }
 
 }
