@@ -33,6 +33,25 @@ public class Names {
         }
     }
 
+    private static int sortAZ(String s1, String s2) {
+        return s1.compareTo(s2);
+    }
+
+    private static int sortZA(String s1, String s2) {
+        return sortAZ(s2, s1);
+    }
+
+    private static int sort1ToLongest(String s1, String s2) {
+        return s1.length() > s2.length()
+                ? 1
+                : s1.length() == s2.length()
+                ? 0 : -1;
+    }
+
+    private static int sortLongestTo1(String s1, String s2) {
+        return sort1ToLongest(s2, s1);
+    }
+
     public Names add(String name) {
         if (name != null) {
             this.names.add(name);
@@ -56,6 +75,9 @@ public class Names {
     }
 
     public Names sort(Comparator<String> comparator) {
+        if (comparator == null) {
+            return new Names();
+        }
         return new Names(names.stream().sorted(comparator).collect(Collectors.toList()));
     }
 
@@ -73,25 +95,6 @@ public class Names {
 
     public Names sortLongestTo1() {
         return sort(Names::sortLongestTo1);
-    }
-
-    private static int sortAZ(String s1, String s2) {
-        return s1.compareTo(s2);
-    }
-
-    private static int sortZA(String s1, String s2) {
-        return sortAZ(s2, s1);
-    }
-
-    private static int sort1ToLongest(String s1, String s2) {
-        return s1.length() > s2.length()
-                ? 1
-                : s1.length() == s2.length()
-                ? 0 : -1;
-    }
-
-    private static int sortLongestTo1(String s1, String s2) {
-        return sort1ToLongest(s2, s1);
     }
 
     public Names sort1ToInfinityAZ() {

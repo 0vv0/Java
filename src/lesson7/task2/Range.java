@@ -5,7 +5,9 @@ import lesson7.task1.Pair;
 /**
  * Created by Oleksii.Sergiienko on 12/26/2016.
  */
-public class Runner {
+public class Range<T extends Number & Comparable<T>>{
+    private final Pair<T, T> range;
+
     public static void main(String[] args) {
 // Создать класс Range<T extends Number & Comparable<T>> (возможно, используя класс Pair<L, R>).
 // Range применяется для хранения промежутка (например, Range<Integer>, Range<Long>).
@@ -22,10 +24,6 @@ public class Runner {
         }
 
     }
-}
-
-class Range<T extends Number & Comparable<T>>{
-    private final Pair<T, T> range;
 
     public Range(Pair<T, T> range) {
         this.range = range;
