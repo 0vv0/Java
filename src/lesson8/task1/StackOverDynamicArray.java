@@ -8,9 +8,11 @@ import java.util.NoSuchElementException;
  */
 public class StackOverDynamicArray<E> implements Stack<E> {
     private int size = 0;
+    @SuppressWarnings("unchecked")
     private E[] value = (E[]) new Object[size];
 
     @Override
+    @SuppressWarnings("unchecked")
     public E pop() {
         if (size == 0) {
             throw new NoSuchElementException("Stack is empty");
@@ -36,6 +38,7 @@ public class StackOverDynamicArray<E> implements Stack<E> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public StackOverDynamicArray<E> pool(E element) {
         if(size==Integer.MAX_VALUE){throw new StackOverflowError("size>Integer.MAX_VALUE");}
         E[] temp = (E[]) new Object[size+1];
@@ -57,7 +60,7 @@ public class StackOverDynamicArray<E> implements Stack<E> {
     }
 
     /**
-     * Returns an iterator over elements of type {@code T}.
+     * Returns an iterator over elements of type {@code E}.
      *
      * @return an Iterator.
      */
