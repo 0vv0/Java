@@ -39,7 +39,7 @@ public class StackOverDynamicArray<E> implements Stack<E> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public StackOverDynamicArray<E> pool(E element) {
+    public StackOverDynamicArray<E> push(E element) {
         if(size==Integer.MAX_VALUE){throw new StackOverflowError("size>Integer.MAX_VALUE");}
         E[] temp = (E[]) new Object[size+1];
         System.arraycopy(value, 0, temp, 1, size);

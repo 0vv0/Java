@@ -24,7 +24,7 @@ public class StackOverConnectedList<E> implements Stack<E> {
     }
 
     @Override
-    public Stack<E> pool(E element) {
+    public Stack<E> push(E element) {
         Inner<E> elem = new Inner<>(element);
         elem.setNext(head);
         head = elem;

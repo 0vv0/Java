@@ -20,7 +20,7 @@ public class StackOverLinkedList<T> implements Stack<T>{
     }
 
     @Override
-    public Stack<T> pool(T element) {
+    public Stack<T> push(T element) {
         list.addLast(element);
         return this;
     }

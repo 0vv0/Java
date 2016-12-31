@@ -37,6 +37,5 @@ public class Runner {
         persons.sort(((o1, o2) -> o1.getName().compareTo(o2.getName())));
         System.out.println(persons.toString());
 
-//        System.out.println(persons.toString());
     }
 }
