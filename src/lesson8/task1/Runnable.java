@@ -7,7 +7,7 @@ import java.util.Iterator;
  */
 public class Runnable {
     public static void main(String[] args) {
-        Stack<Integer> stack = new DynamicArray<>();
+        Stack<Integer> stack = new StackOverDynamicArray<>();
         System.out.println("Stack is empty? " + stack.isEmpty());
         System.out.println("Stack size=" + stack.size());
 

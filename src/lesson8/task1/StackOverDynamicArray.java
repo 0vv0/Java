@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 /**
  * Created by Oleksii.Sergiienko on 12/31/2016.
  */
-public class DynamicArray<E> implements Stack<E> {
+public class StackOverDynamicArray<E> implements Stack<E> {
     private int size = 0;
     private E[] value = (E[]) new Object[size];
 
@@ -36,7 +36,7 @@ public class DynamicArray<E> implements Stack<E> {
     }
 
     @Override
-    public DynamicArray<E> pool(E element) {
+    public StackOverDynamicArray<E> pool(E element) {
         if(size==Integer.MAX_VALUE){throw new StackOverflowError("size>Integer.MAX_VALUE");}
         E[] temp = (E[]) new Object[size+1];
         System.arraycopy(value, 0, temp, 1, size);
@@ -63,10 +63,10 @@ public class DynamicArray<E> implements Stack<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        return new DynamicArrayIterator();
+        return new StackOverDynamicArrayIterator();
     }
 
-    class DynamicArrayIterator implements Iterator<E>{
+    class StackOverDynamicArrayIterator implements Iterator<E>{
 
         /**
          * Returns {@code true} if the iteration has more elements.
