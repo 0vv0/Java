@@ -1,25 +1,57 @@
 package lesson8.task1;
 
+import java.util.Iterator;
+
 /**
- * Created by Oleksii.Sergiienko on 12/28/2016.
+ * Created by Oleksii.Sergiienko on 12/31/2016.
  */
-public class DynamicArray<E> implements lesson8.task1.Stack<E>{
-    private E[] value;
+public class DynamicArray<E> implements Stack {
+    private int size = 0;
+    private E[] value = (E[]) new Object[size];
 
-    public DynamicArray(E... value) {
-        this.value = (E[]) new Object[value.length];
-    }
-
-    public DynamicArray() {
+    private void reSize(int newSize) {
+        E[] temp = (E[]) new Object[newSize];
+        for (int i = 0; i < newSize; i++) {
+            temp[i] = i < size ? value[i] : null;
+        }
+        size = newSize;
+        value = (E[]) new Object[size];
+        System.arraycopy(temp, 0, value, 0, size);
     }
 
     @Override
-    public void push(E item) {
-
-    }
-
-    @Override
-    public E pop() {
+    public Object pop() {
         return null;
     }
+
+    @Override
+    public Object peek() {
+        return null;
+    }
+
+    @Override
+    public void pool(Object element) {
+
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator iterator() {
+        return null;
+    }
+
 }
