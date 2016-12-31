@@ -6,7 +6,7 @@ package lesson8.task1;
 public interface Stack<E> extends Iterable<E>{
     E pop();
     E peek();
-    void pool(E element);
+    Stack<E> pool(E element);
     boolean isEmpty();
     int size();
 }
