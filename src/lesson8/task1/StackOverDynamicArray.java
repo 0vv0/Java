@@ -66,7 +66,7 @@ public class StackOverDynamicArray<E> implements Stack<E> {
         return new StackOverDynamicArrayIterator();
     }
 
-    class StackOverDynamicArrayIterator implements Iterator<E>{
+    private class StackOverDynamicArrayIterator implements Iterator<E>{
 
         /**
          * Returns {@code true} if the iteration has more elements.
