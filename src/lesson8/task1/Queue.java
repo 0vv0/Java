@@ -7,4 +7,6 @@ public interface Queue<T> extends Iterable<T>{
     T pop();
     T peek();
     Stack<T> push(T element);
+    boolean isEmpty();
+    int size();
 }

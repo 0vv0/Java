@@ -2,14 +2,12 @@ package lesson8.task1;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
 
 /**
  * Created by Oleksii.Sergiienko on 12/31/2016.
  */
-public class StackOverLinkedList<T> implements Stack<T> {
+public class QueueOverLinkedList<T> implements Queue<T> {
     private LinkedList<T> list = new LinkedList<T>();
-
     @Override
     public T pop() {
         return list.pop();
@@ -17,24 +15,22 @@ public class StackOverLinkedList<T> implements Stack<T> {
 
     @Override
     public T peek() {
-        if(this.isEmpty()){throw new NoSuchElementException();}
         return list.peek();
     }
 
     @Override
     public Stack<T> push(T element) {
-        list.addFirst(element);
-        return this;
+        return null;
     }
 
     @Override
     public boolean isEmpty() {
-        return list.isEmpty();
+        return false;
     }
 
     @Override
     public int size() {
-        return list.size();
+        return 0;
     }
 
     /**
@@ -44,6 +40,6 @@ public class StackOverLinkedList<T> implements Stack<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return list.iterator();
+        return null;
     }
 }

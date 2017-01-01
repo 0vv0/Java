@@ -93,12 +93,5 @@ public class StackOverDynamicArray<E> implements Stack<E> {
         public E next() {
             return pop();
         }
-
-        @Override
-        public void  remove(){
-            pop();
-        }
-
-
     }
 }

@@ -13,7 +13,7 @@ public class Runnable {
 
         //System.out.println(stack.peek());
 
-        stack.pool(5).pool(6).pool(222);
+        stack.push(5).push(6).push(222);
 
         System.out.println("Stack is empty? " + stack.isEmpty());
         System.out.println("Stack size=" + stack.size());
@@ -32,7 +32,7 @@ public class Runnable {
             System.out.println(e);
         }
 
-        stack.pool(1).pool(2).pool(3);
+        stack.push(1).push(2).push(3);
         Iterator<Integer> iter = stack.iterator();
         while (iter.hasNext()) {
             System.out.println(iter.next());
@@ -45,7 +45,7 @@ public class Runnable {
 
         //System.out.println(stack.peek());
 
-        stack.pool(5).pool(6).pool(222);
+        stack.push(5).push(6).push(222);
 
         System.out.println("Stack is empty? " + stack.isEmpty());
         System.out.println("Stack size=" + stack.size());
@@ -62,11 +62,40 @@ public class Runnable {
             System.out.println(e);
         }
 
-        stack.pool(1).pool(2).pool(3);
+        stack.push(1).push(2).push(3);
         iter = stack.iterator();
         while (iter.hasNext()) {
             System.out.println(iter.next());
         }
 
+        System.out.println("******** Stack over LinkedList **********");
+        stack = new StackOverLinkedList<>();
+        System.out.println("Stack is empty? " + stack.isEmpty());
+        System.out.println("Stack size=" + stack.size());
+
+        //System.out.println(stack.peek());
+
+        stack.push(5).push(6).push(222);
+
+        System.out.println("Stack is empty? " + stack.isEmpty());
+        System.out.println("Stack size=" + stack.size());
+
+        System.out.println("Show top: " + stack.peek());
+        System.out.println("Get top: " + stack.pop());
+        System.out.println("Get top: " + stack.pop());
+        System.out.println("Get top: " + stack.pop());
+
+        try {
+            System.out.println("Show top: " + stack.peek());
+            System.out.println("Get top: " + stack.pop());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        stack.push(1).push(2).push(3);
+        iter = stack.iterator();
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
+        }
     }
 }
