@@ -1,4 +1,4 @@
-package lesson8.task1;
+package lesson8.task1_2;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -7,8 +7,8 @@ import java.util.NoSuchElementException;
 /**
  * Created by Oleksii.Sergiienko on 12/31/2016.
  */
-public class StackOverLinkedList<T> implements Stack<T> {
-    private LinkedList<T> list = new LinkedList<T>();
+public class QueueOverLinkedList<T> implements Queue<T> {
+    private LinkedList<T> list = new LinkedList<>();
 
     @Override
     public T pop() {
@@ -22,8 +22,8 @@ public class StackOverLinkedList<T> implements Stack<T> {
     }
 
     @Override
-    public Stack<T> push(T element) {
-        list.addFirst(element);
+    public Queue<T> push(T element) {
+        list.addLast(element);
         return this;
     }
 
