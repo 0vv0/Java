@@ -5,4 +5,9 @@ package lesson4.task1;
  */
 public interface IFileSystemObject extends ISizable{
     String getName();
+
+    default boolean isNotGoodForName(String name) {
+        return name == null || name.length() < 1;
+    }
+
 }

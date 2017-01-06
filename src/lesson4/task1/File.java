@@ -9,7 +9,7 @@ public class File implements IFileSystemObject, IReturnStringSize {
 
     public File(String name, int size) {
         if (isNotGoodForName(name)) {
-            throw new IllegalArgumentException("File name is null or empty");
+            throw new IllegalArgumentException("Bad file name");
         }
         if (size < 0) {
             throw new IllegalArgumentException("Size<0 not supported");
@@ -31,10 +31,4 @@ public class File implements IFileSystemObject, IReturnStringSize {
     public int getSize() {
         return size;
     }
-
-    private boolean isNotGoodForName(String name) {
-        return name == null || name.length() < 1;
-    }
-
-
 }

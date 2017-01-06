@@ -1,9 +1,7 @@
 package lesson4.task1;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.StringJoiner;
 
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
@@ -14,6 +12,9 @@ public class Directory implements IFileSystemObject, IReturnStringSize {
     private final Set<IFileSystemObject> content = new HashSet<>();
 
     public Directory(String name) {
+        if (isNotGoodForName(name)) {
+            throw new IllegalArgumentException("Bad directory name");
+        }
         this.name = name;
     }
 
