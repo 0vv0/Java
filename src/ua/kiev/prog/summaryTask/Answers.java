@@ -23,7 +23,7 @@ public class Answers implements Iterable<TaskWithAnswer>{
         StringJoiner sj = new StringJoiner("\n", "List of Answers of " + pupil.toString() + ":\n", "\n***************");
         answers.stream()
                 .filter(Objects::nonNull)
-                .forEach(x -> sj.add(x.getTask() + " answer is: " + x.getAnswer()));
+                .forEach(x -> sj.add(x.getTask() + " answer is:\n        " + x.getAnswer()));
         return sj.toString();
     }
 
