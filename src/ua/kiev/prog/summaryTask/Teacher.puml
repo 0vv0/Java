@@ -1,0 +1,10 @@
+@startuml
+!include Mark.puml
+!include NamedPerson.puml
+class Teacher extends NamedPerson implements ITeach {
+
+
+    public Teacher(String name, String surname)
+    public Mark mark(TaskWithAnswer task)
+}
+@enduml

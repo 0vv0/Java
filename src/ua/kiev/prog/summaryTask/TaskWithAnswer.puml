@@ -1,0 +1,14 @@
+@startuml
+!include Task.puml
+class TaskWithAnswer {
+    private Task task;
+    private String answer;
+
+    public TaskWithAnswer(Task task)
+
+    TaskWithAnswer setAnswer(String answer)
+    public Task getTask()
+
+    public String getAnswer()
+}
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+!include Pupil.puml
+!include TaskWithAnswer.puml
+!include Mark.puml
+class Marks implements Iterable{
+    private Pupil pupil;
+    private HashMap<TaskWithAnswer, Mark> marks = new HashMap<>();
+
+    public Marks(Pupil pupil)
+
+    public Marks setMark(TaskWithAnswer taskWithAnswer, Mark mark)
+
+    public  String toString(
+
+    public Iterator<TaskWithAnswer> iterator()
+}
+@enduml

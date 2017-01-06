@@ -1,0 +1,13 @@
+@startuml
+class Answers implements Iterable{
+    private Pupil pupil;
+    private List<TaskWithAnswer> answers = new ArrayList<>();
+
+    public Answers(Pupil pupil)
+    public Answers addAnswer(Task task, String answer)
+
+    public String toString()
+
+    public Iterator<TaskWithAnswer> iterator()
+}
+@enduml

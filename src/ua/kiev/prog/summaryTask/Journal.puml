@@ -1,0 +1,15 @@
+@startuml
+!include Pupil.puml
+!include Answers.puml
+class Journal {
+    private HashMap<Pupil, Answers>journal = new HashMap<>();
+
+
+    Journal add(Pupil pupil, Answers answers)
+
+    Journal remove(Pupil pupil)
+
+    public  String toString()
+
+}
+@enduml
