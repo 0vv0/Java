@@ -3,34 +3,21 @@ package ua.kiev.prog.summaryTask;
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
-public class Pupil implements IPerson, IAnswer {
-    private String name;
-    private String surname;
-    private IPerson mother;
-    private IPerson father;
+public class Pupil extends NamedPerson implements IAnswer {
+    private NamedPerson mother;
+    private NamedPerson father;
 
-    public Pupil(String name, String surname, IPerson mother, IPerson father) {
-        this.name = name;
-        this.surname = surname;
+    public Pupil(String name, String surname, NamedPerson mother, NamedPerson father) {
+        super(name, surname);
         this.mother = mother;
         this.father = father;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getSurname() {
-        return surname;
-    }
-
-    public IPerson getMother() {
+    public NamedPerson getMother() {
         return mother;
     }
 
-    public IPerson getFather() {
+    public NamedPerson getFather() {
         return father;
     }
 
@@ -39,8 +26,4 @@ public class Pupil implements IPerson, IAnswer {
         return "This is my answer for : " + task;
     }
 
-    @Override
-    public String toString() {
-        return getSurname() + " " + getName();
-    }
 }

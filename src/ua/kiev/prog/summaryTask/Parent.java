@@ -3,28 +3,15 @@ package ua.kiev.prog.summaryTask;
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
-public class Parent implements IPerson {
-    private String name;
-    private String surname;
+public class Parent extends NamedPerson {
+    private String address;
 
-    public Parent(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
+    public Parent(String name, String surname, String address) {
+        super(name, surname);
+        this.address = address;
     }
 
-    @Override
-    public String getName() {
-        return name;
+    public String getAddress() {
+        return address;
     }
-
-    @Override
-    public String getSurname() {
-        return surname;
-    }
-
-    @Override
-    public String toString() {
-        return getSurname() + " " + getName();
-    }
-
 }

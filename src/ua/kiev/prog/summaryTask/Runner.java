@@ -5,8 +5,8 @@ package ua.kiev.prog.summaryTask;
  */
 public class Runner {
     public static void main(String[] args) {
-        IPerson mom = new Parent("Silvia", "Sergiienko");
-        IPerson dad = new Parent("Nicolai", "Sergiienko");
+        NamedPerson mom = new Parent("Silvia", "Sergiienko", "");
+        NamedPerson dad = new Parent("Nicolai", "Sergiienko", "");
         Pupil oleksii = new Pupil("Oleksii", "Sergiienko", mom, dad);
         ITeach teacher = new Teacher("Bohdan", "Vanchuhov");
         TaskList taskList = new TaskList().add(
