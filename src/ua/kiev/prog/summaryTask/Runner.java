@@ -10,8 +10,8 @@ public class Runner {
         Pupil oleksii = new Pupil("Oleksii", "Sergiienko", mom, dad);
         ITeach teacher = new Teacher("Bohdan", "Vanchuhov");
         TaskList taskList = new TaskList().add(
-                new Task("How many oceans?"),
-                new Task("What is the capital of Ukraine?")
+                new Task("What is Interface in Java?"),
+                new Task("What is Static Method in Java?")
         );
         Answers answers = new Answers(oleksii);
         for(Task task:taskList){
