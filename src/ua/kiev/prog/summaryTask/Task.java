@@ -6,23 +6,22 @@ package ua.kiev.prog.summaryTask;
 public class Task {
     private static int counter = 0;
     private final int id = counter++;
-    private final String name;
     private final String text;
 
-    public Task(String name, String text) {
-        this.name = name;
+    public Task(String text) {
         this.text = text;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getText() {
         return text;
+    }
+
+    @Override
+    public String toString(){
+        return "#" +id + ": " + text;
     }
 }

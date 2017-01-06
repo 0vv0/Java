@@ -35,7 +35,12 @@ public class Pupil implements IPerson, IAnswer {
     }
 
     @Override
-    public String answer(Task task) {
-        return "He is my answer!!!!";
+    public String getAnswer(Task task) {
+        return "This is my answer for : " + task;
+    }
+
+    @Override
+    public String toString() {
+        return getSurname() + " " + getName();
     }
 }
