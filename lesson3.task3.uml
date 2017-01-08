@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>lesson3.task3</OriginalElement>
+  <nodes>
+    <node x="25.5" y="264.5">lesson3.task3.IPU</node>
+    <node x="325.49999999999994" y="0.0">lesson3.task3.IHardware</node>
+    <node x="356.5" y="725.0">lesson3.task3.Runner</node>
+    <node x="0.0" y="529.0">lesson3.task3.ProcessorUnit</node>
+    <node x="262.5" y="169.0">lesson3.task3.Computer</node>
+    <node x="660.5" y="237.5">lesson3.task3.IMemory</node>
+    <node x="673.5" y="529.0">lesson3.task3.Memory</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="lesson3.task3.Computer" target="lesson3.task3.IHardware">
+      <point x="94.5" y="-155.0" />
+      <point x="546.0" y="149.0" />
+      <point x="482.99999999999994" y="149.0" />
+      <point x="31.5" y="59.5" />
+    </edge>
+    <edge source="lesson3.task3.Runner" target="lesson3.task3.Computer">
+      <point x="0.0" y="-32.0" />
+      <point x="0.0" y="155.0" />
+    </edge>
+    <edge source="lesson3.task3.IPU" target="lesson3.task3.IHardware">
+      <point x="0.0" y="-59.5" />
+      <point x="134.0" y="139.0" />
+      <point x="356.99999999999994" y="139.0" />
+      <point x="-94.5" y="59.5" />
+    </edge>
+    <edge source="lesson3.task3.ProcessorUnit" target="lesson3.task3.IPU">
+      <point x="0.0" y="-73.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="lesson3.task3.IMemory" target="lesson3.task3.IHardware">
+      <point x="0.0" y="-86.5" />
+      <point x="821.5" y="139.0" />
+      <point x="546.0" y="139.0" />
+      <point x="94.5" y="59.5" />
+    </edge>
+    <edge source="lesson3.task3.Memory" target="lesson3.task3.IMemory">
+      <point x="0.0" y="-73.0" />
+      <point x="0.0" y="86.5" />
+    </edge>
+    <edge source="lesson3.task3.Runner" target="lesson3.task3.ProcessorUnit">
+      <point x="-63.33333333333334" y="-32.0" />
+      <point x="388.16666666666663" y="700.0" />
+      <point x="134.0" y="700.0" />
+      <point x="0.0" y="73.0" />
+    </edge>
+    <edge source="lesson3.task3.Runner" target="lesson3.task3.Memory">
+      <point x="63.33333333333334" y="-32.0" />
+      <point x="514.8333333333334" y="700.0" />
+      <point x="821.5" y="700.0" />
+      <point x="0.0" y="73.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="491.5" y="394.5" />
+  <SelectedNodes>
+    <node>lesson3.task3.Memory</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
