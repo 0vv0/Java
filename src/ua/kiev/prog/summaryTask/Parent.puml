@@ -1,9 +1,0 @@
-@startuml
-!include NamedPerson.puml
-class Parent extends NamedPerson {
-    private String address;
-
-    public Parent(String name, String surname, String address)
-    public String getAddress()
-}
-@enduml

@@ -1,5 +1,0 @@
-@startuml
-interface IAnswer {
-    String getAnswer(Task task);
-}
-@enduml

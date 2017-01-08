@@ -1,6 +1,0 @@
-@startuml
-!include TaskWithAnswer.puml
-interface ITeach {
-    Mark mark(TaskWithAnswer taskWithAnswer);
-}
-@enduml
