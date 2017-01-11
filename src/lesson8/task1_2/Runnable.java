@@ -1,13 +1,15 @@
 package lesson8.task1_2;
 
+import java.util.NoSuchElementException;
+
 /**
  * Created by Oleksii.Sergiienko on 12/28/2016.
  */
 class Runnable {
     public static void main(String[] args) {
-        getChecksForStack("******** stack over Dynamic Array **********", new StackOverDynamicArray() );
-        getChecksForStack("******** stack over Connected List **********", new StackOverConnectedList() );
-        getChecksForStack("******** stack over Linked List **********", new StackOverLinkedList() );
+        getChecksForStack("******** stack over Dynamic Array **********", new StackOverDynamicArray<>() );
+        getChecksForStack("******** stack over Connected List **********", new StackOverConnectedList<>() );
+        getChecksForStack("******** stack over Linked List **********", new StackOverLinkedList<>() );
 
         getChecksForQueue("******** queue over Dynamic Array **********", new QueueOverDynamicArray<>() );
         getChecksForQueue("******** queue over Connected List **********", new QueueOverConnectedList<>() );
@@ -35,7 +37,7 @@ class Runnable {
         try {
             System.out.println("Show top: " + queue.peek());
             System.out.println("Get top: " + queue.pop());
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             System.out.println(e.getLocalizedMessage());
         }
 
