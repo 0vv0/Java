@@ -7,22 +7,29 @@ import java.util.StringJoiner;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class Planet{
+public class Planet {
     private final String name;
-    private final Set<IArea> list = new HashSet();
-    Planet(String planetName){
-        if(planetName==null){throw new IllegalArgumentException("Planet name is null");}
+    private final Set<IArea> list = new HashSet<IArea>();
+
+    Planet(String planetName) throws IllegalArgumentException{
+        if (planetName == null||planetName.length()==0) {
+            throw new IllegalArgumentException("Planet name is null");
+        }
         this.name = planetName;
     }
 
-    Planet(){
+    Planet() {
         this.name = "Earth";
     }
 
-    Planet add(IArea area){
-        if(area==null){return this;}
-        for(IArea iA:list){
-            if(iA==area){return this;}
+    Planet add(IArea area) {
+        if (area == null) {
+            return this;
+        }
+        for (IArea iA : list) {
+            if (iA == area) {
+                return this;
+            }
         }
         list.add(area);
         return this;
@@ -31,29 +38,29 @@ public class Planet{
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner("\n");
-        for(IArea iA:list){
+        for (IArea iA : list) {
             sj.add(iA.getName() + " - " + iA.getType());
         }
 
         return "Planet The " + name + " contains:\n" + sj;
     }
 
-    int getOceansCount(){
+    long getOceansCount() {
         return countAllByType(IArea.Type.Ocean);
     }
-    
-    int getContinentsCount(){
+
+    long getContinentsCount() {
         return countAllByType(IArea.Type.Continent);
     }
-    
-    int getIslandsCount(){
+
+    long getIslandsCount() {
         return countAllByType(IArea.Type.Island);
     }
 
-    int countAllByType(IArea.Type type){
-        return (int)list
+    long countAllByType(IArea.Type type) {
+        return list
                 .stream()
-                .filter(x->x.getType()==type)
+                .filter(x -> x.getType() == type)
                 .count();
     }
 }

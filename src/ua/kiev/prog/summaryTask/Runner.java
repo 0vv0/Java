@@ -5,6 +5,7 @@ package ua.kiev.prog.summaryTask;
  */
 public class Runner {
     public static void main(String[] args) {
+
         NamedPerson mom = new Parent("Silvia", "Sergiienko", "");
         NamedPerson dad = new Parent("Nicolai", "Sergiienko", "");
         Pupil oleksii = new Pupil("Oleksii", "Sergiienko", mom, dad);

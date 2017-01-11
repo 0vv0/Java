@@ -7,11 +7,11 @@ public class ProcessorUnit implements IPU {
     private final String name;
     private final IPU.Type theType;
 
-    ProcessorUnit(String name) {
+    ProcessorUnit(String name)throws IllegalArgumentException {
         this(name, Type.CPU);
     }
 
-    ProcessorUnit(String name, IPU.Type type) {
+    ProcessorUnit(String name, IPU.Type type) throws IllegalArgumentException{
         if(name==null){throw new IllegalArgumentException("Name is missed");}
         this.name = name;
         this.theType = type;
