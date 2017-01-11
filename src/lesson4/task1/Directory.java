@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class Directory implements IFileSystemObject, IReturnStringSize, Comparable<IFileSystemObject> {
+class Directory implements IFileSystemObject, IReturnStringSize, Comparable<IFileSystemObject> {
     private static int counter = 0;
     private final String name;
     private final Set<IFileSystemObject> content = new HashSet<>();

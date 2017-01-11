@@ -3,7 +3,7 @@ package lesson3.task3;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class Memory implements IMemory{
+class Memory implements IMemory{
     private final String theName;
     private final int theSize;
     private final IMemory.Type theType;

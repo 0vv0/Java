@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Oleksii.Sergiienko on 12/26/2016.
  */
-public class Film implements IGenred{
+class Film implements IGenred{
 //            1. Film: название, год выпуска, список имен актеров, список жанров.
 
     private final String theName;

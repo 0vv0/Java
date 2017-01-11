@@ -3,7 +3,7 @@ package lesson2.task3;
 /**
  * Created by Oleksii.Sergiienko on 19.12.2016.
  */
-public class PuppyRunner {
+class PuppyRunner {
     public static void main(String[] args) {
         Animal animal = new Puppy("Tim");
         System.out.println(animal.getNickname());

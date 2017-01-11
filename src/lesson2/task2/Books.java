@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by Oleksii.Sergiienko on 19.12.2016.
  */
-public class Books {
+class Books {
     /*
     2. Books: ArrayList<Book> books. Позволяет выполнить поиск:
     a)  список книг заданного автора;

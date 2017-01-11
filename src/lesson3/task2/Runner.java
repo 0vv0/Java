@@ -1,11 +1,9 @@
 package lesson3.task2;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class Runner {
+class Runner {
     public static void main(String[] args) {
         Planet earth = new Planet();
         Area england = new Area("England", IArea.Type.Island);

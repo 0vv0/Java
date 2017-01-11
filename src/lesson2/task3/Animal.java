@@ -3,7 +3,7 @@ package lesson2.task3;
 /**
  * Created by Oleksii.Sergiienko on 19.12.2016.
  */
-public abstract class Animal {
+abstract class Animal {
     private String nickname;
 
     Animal() {

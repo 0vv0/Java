@@ -3,7 +3,7 @@ package lesson2.task2;
 /**
  * Created by Oleksii.Sergiienko on 19.12.2016.
  */
-public class Author {
+class Author {
     private String nick = "";
     private String name = "";
     private String surname = "";
@@ -22,12 +22,17 @@ public class Author {
         this.yearOfBirth = yearOfBirth;
     }
 
+    @Override
     public String toString(){
         return name + " " + surname + "(" + nick + ", " + yearOfBirth + ")";
     }
 
     public void setNick(String nick) {
         this.nick = nick;
+    }
+
+    public String getNick() {
+        return nick;
     }
 
     public String getName() {

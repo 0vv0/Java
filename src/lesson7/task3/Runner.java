@@ -3,7 +3,7 @@ package lesson7.task3;
 /**
  * Created by Oleksii.Sergiienko on 12/28/2016.
  */
-public class Runner {
+class Runner {
     //  Создать класс Names (List<String> names), который умеет выполнять следующие действия:
 //1. Отсортировать имена в алфавитном порядке.
 //2. Отсортировать имена в алфавитном порядке по убыванию.

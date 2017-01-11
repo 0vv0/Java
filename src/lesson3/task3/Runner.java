@@ -3,7 +3,7 @@ package lesson3.task3;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class Runner {
+class Runner {
     public static void main(String[] args) {
 //Создать  объект  класса Компьютер,  используя  классы  Винчестер, Дисковод, Оперативная память, Процессор.
 // Методы: включить, выключить, проверить на вирусы, вывести на консоль размер винчестера.

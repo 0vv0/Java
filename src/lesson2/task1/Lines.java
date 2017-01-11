@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Created by Oleksii.Sergiienko on 19.12.2016.
  */
-public class Lines {
+class Lines {
     private static final int NUMBER_OF_LINES = 0;
     private final ArrayList<Line> lines = new ArrayList<>();
 

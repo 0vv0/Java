@@ -3,7 +3,7 @@ package lesson4.task1;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class File implements IFileSystemObject, IReturnStringSize, Comparable<IFileSystemObject> {
+class File implements IFileSystemObject, IReturnStringSize, Comparable<IFileSystemObject> {
     private final String name;
     private int size;
 

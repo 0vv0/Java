@@ -4,7 +4,7 @@ package lesson1.task2;
  *
  * @author Oleksii.Sergiienko
  */
-public class Rectangle {
+class Rectangle {
 
     private final double width;
     private final double height;

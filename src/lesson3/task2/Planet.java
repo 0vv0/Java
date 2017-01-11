@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class Planet {
+class Planet {
     private final String name;
     private final Set<IArea> list = new HashSet<IArea>();
 

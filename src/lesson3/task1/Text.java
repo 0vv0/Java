@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Oleksii.Sergiienko on 20.12.2016.
  */
-public class Text {
+class Text {
     private static int hashCounter = 0;
 
     private final int hash = hashCounter++;

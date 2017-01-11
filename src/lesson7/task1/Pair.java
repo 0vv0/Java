@@ -12,16 +12,16 @@ public class Pair<L, R> {
         this.right = right;
     }
 
-    public L getLeft(){
+    public L getLeft() {
         return left;
     }
 
-    public R getRight(){
+    public R getRight() {
         return right;
     }
 
     @Override
     public String toString() {
-        return "(" + left +", " + right +")";
+        return "(" + left + ", " + right + ")";
     }
 }

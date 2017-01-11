@@ -3,7 +3,7 @@ package lesson3.task1;
 /**
  * Created by Oleksii.Sergiienko on 20.12.2016.
  */
-public class Word {
+class Word {
     private static int hashCounter = 0;
 
     private final String value;

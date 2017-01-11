@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Oleksii.Sergiienko on 12/28/2016.
  */
-public class Names {
+class Names {
     private final List<String> names = new ArrayList<>();
 
     public Names() {

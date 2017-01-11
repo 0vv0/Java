@@ -6,7 +6,7 @@ import java.util.Scanner;
  *
  * @author Oleksii.Sergiienko
  */
-public class RectangleRunner {
+class RectangleRunner {
 
     /**
      * @param args the command line arguments

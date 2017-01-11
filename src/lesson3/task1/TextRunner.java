@@ -3,7 +3,7 @@ package lesson3.task1;
 /**
  * Created by Oleksii.Sergiienko on 21.12.2016.
  */
-public class TextRunner {
+class TextRunner {
     public static void main(String[] args) {
         Text text= new Text();
         System.out.println(text.toString());

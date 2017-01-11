@@ -6,12 +6,13 @@ import java.util.StringJoiner;
 /**
  * Created by Oleksii.Sergiienko on 18.12.2016.
  */
-public class Palindromes {
+class Palindromes {
     private ArrayList<Number> al = new ArrayList<>();
     void add(Number number, int capacity){
         if(number.isPalindrom()&&al.size()<capacity){al.add(number);}
     }
 
+    @Override
     public String toString(){
         StringJoiner sj = new StringJoiner(", ", "[", "]");
         for (Number n:al) {

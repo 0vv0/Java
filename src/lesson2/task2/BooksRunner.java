@@ -3,7 +3,7 @@ package lesson2.task2;
 /**
  * Created by Oleksii.Sergiienko on 19.12.2016.
  */
-public class BooksRunner {
+class BooksRunner {
     public static void main(String[] args) {
         Books bookShelf = new Books();//new empty book shelf
         printLine("Empty book shelf:");
@@ -59,6 +59,20 @@ public class BooksRunner {
 
         bookShelf.removeAll();
         printLine("Book shelf is cleared:");
+        printBooks(bookShelf);
+
+        bookShelf = new Books();
+        printLine("Book shelf with one book:");
+        try {
+            bookShelf.add(
+                    new Book.Builder()
+                            .setAuthor(new Author("THEUNKNOWN", "The Author", "Unknown", 1980))
+                            .setPrice(.22f)
+                            .build()
+            );
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getLocalizedMessage());
+        }
         printBooks(bookShelf);
 
     }

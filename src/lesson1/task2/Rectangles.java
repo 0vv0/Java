@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author Oleksii.Sergiienko
  */
-public class Rectangles {
+class Rectangles {
 
     private final ArrayList<Rectangle> rectangles = new ArrayList<>();
 

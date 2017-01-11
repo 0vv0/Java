@@ -3,7 +3,7 @@ package lesson3.task3;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public interface IMemory extends IHardware {
+interface IMemory extends IHardware {
     int getSize();
 
     default IMemory checkForViruses() {

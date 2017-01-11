@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by Oleksii.Sergiienko on 18.12.2016.
  */
-public class Month {
+class Month {
     private int month;
 
     Month(int n){
@@ -29,6 +29,7 @@ public class Month {
         return (i > 0) && (i < 13);
     }
 
+    @Override
     public String toString(){
         switch (month){
             case 1:

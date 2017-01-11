@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Created by Oleksii.Sergiienko on 18.12.2016.
  */
-public class PalindromeRunner {
+class PalindromeRunner {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

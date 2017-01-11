@@ -5,7 +5,7 @@ import lesson7.task1.Pair;
 /**
  * Created by Oleksii.Sergiienko on 12/26/2016.
  */
-public class Range<T extends Number & Comparable<T>>{
+class Range<T extends Number & Comparable<T>>{
     private final Pair<T, T> range;
 
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class Range<T extends Number & Comparable<T>>{
         System.out.println(new Range<>(-1.1,0.));
         System.out.println(new Range<>(Integer.MIN_VALUE,Integer.MAX_VALUE));
         try {
-            System.out.println(new Range<>(5, 0));
+            System.out.println(new Range<>(127, -128));
         }catch (IllegalArgumentException e){
             System.out.println(e);
         }

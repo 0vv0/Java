@@ -3,7 +3,7 @@ package lesson6.task1;
 /**
  * Created by Oleksii.Sergiienko on 12/26/2016.
  */
-public class FilmsRunner {
+class FilmsRunner {
     //            1. Film: название, год выпуска, список имен актеров, список жанров.
 //2. Films: ArrayList<Film> films. Позволяет выполнить поиск:
 //    a) список фильмов с заданными жанрами (например, HORROR и THRILLER).

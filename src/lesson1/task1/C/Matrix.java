@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 /**
  * Created by Oleksii.Sergiienko on 18.12.2016.
  */
-public class Matrix {
+class Matrix {
     final private int size;
     final private int[][] matrix;
 
@@ -23,6 +23,7 @@ public class Matrix {
         }
     }
 
+    @Override
     public String toString() {
         String s = "";
 

@@ -3,7 +3,7 @@ package lesson2.task1;
 /**
  * Created by Oleksii.Sergiienko on 19.12.2016.
  */
-public class Point {
+class Point {
     private final double x;
     private final double y;
 

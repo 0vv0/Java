@@ -3,7 +3,7 @@ package lesson4.task1;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public interface IReturnStringSize {
+interface IReturnStringSize {
     default String getStringSize(int sizeInBytes){
         assert sizeInBytes>=0;
         String s = sizeInBytes < 1024

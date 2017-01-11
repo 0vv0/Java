@@ -3,7 +3,7 @@ package lesson2.task1;
 /**
  * Created by Oleksii.Sergiienko on 19.12.2016.
  */
-public class Line {
+class Line {
     private final Point start;
     private final Point end;
 
@@ -25,6 +25,7 @@ public class Line {
                 + Math.abs(start.getY() - end.getY()) * Math.abs(start.getY() - end.getY()), 0.5);
     }
 
+    @Override
     public String toString() {
         return start.toString() + "-" + end.toString();
     }

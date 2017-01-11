@@ -6,14 +6,14 @@ import java.util.List;
 /**
  * Created by Oleksii.Sergiienko on 12/26/2016.
  */
-public class Films {
+class Films {
     private final List<Film> films = new ArrayList<>();
 
-    public Films(){
+    Films(){
 
     }
 
-    public Films(Film... films) {
+    Films(Film... films) {
         for (Film film : films) {
             if (film != null) {
                 this.films.add(film);

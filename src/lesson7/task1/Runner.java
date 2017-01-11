@@ -3,7 +3,7 @@ package lesson7.task1;
 /**
  * Created by Oleksii.Sergiienko on 12/26/2016.
  */
-public class Runner {
+class Runner {
 // Создать класс Pair<L, R>, хранящий пару значений (L left, R right).
 // Объекты класса Pair должны быть неизменяемые (Immutable).
 // Создать клиентский класс, демонстрирующий работу Pair.

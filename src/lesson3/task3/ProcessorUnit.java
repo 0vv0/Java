@@ -3,7 +3,7 @@ package lesson3.task3;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class ProcessorUnit implements IPU {
+class ProcessorUnit implements IPU {
     private final String name;
     private final IPU.Type theType;
 

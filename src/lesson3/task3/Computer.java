@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class Computer implements IHardware {
+class Computer implements IHardware {
     private final Set<IHardware> list = new HashSet<>();
     private final String theName;
 
@@ -86,23 +86,23 @@ public class Computer implements IHardware {
         return iH;
     }
 
-        private Set<IHardware> getOfTypeIMemory(IMemory.Type type){
-            Set<IHardware> iH = new HashSet<>();
+    private Set<IHardware> getOfTypeIMemory(IMemory.Type type) {
+        Set<IHardware> iH = new HashSet<>();
 
-            list
-                    .stream()
-                    .filter(x -> x instanceof Memory)
-                    .filter(x -> ((Memory) x).getType() == type)
-                    .forEach(iH::add);
-            return iH;
-        }
-
-        void getSize(){
-
-            list
-                    .stream()
-                    .filter(x->x instanceof Memory)
-                    .forEach(x-> System.out.println(((Memory)x).getType() + ": " + x.getName() + " has size: " + ((Memory)x).getSize()));
-
-        }
+        list
+                .stream()
+                .filter(x -> x instanceof Memory)
+                .filter(x -> ((Memory) x).getType() == type)
+                .forEach(iH::add);
+        return iH;
     }
+
+    void getSize() {
+
+        list
+                .stream()
+                .filter(x -> x instanceof Memory)
+                .forEach(x -> System.out.println(((Memory) x).getType() + ": " + x.getName() + " has size: " + ((Memory) x).getSize()));
+
+    }
+}
