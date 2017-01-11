@@ -9,41 +9,28 @@ class BooksRunner {
         printLine("Empty book shelf:");
         printBooks(bookShelf);
 
-        Book theBook = new Book(
-                new Author("The First", "Oleksii", "Sergiienko", 1980)
-                , "My First Book"
-                , "SelfPrint"
-                , 2016
-                , 50
-                , 30
-                , false
-        );
+        Book theBook = new Book.Builder()
+                .setAuthor(new Author("nick", "name", "surname", 1980))
+                .setTitle("My Kampf")
+                .setSoftBinding(true)
+                .build();
 
-        Book theBook2 = new Book(
-                new Author("The First", "Oleksii", "Sergiienko", 1980)
-                , "My First Book"
-                , "SelfPrint"
-                , 2016
-                , 50
-                , 10
-                , true
-        );
+        Book theBook2 = new Book.Builder()
+                .setAuthor(new Author("The First", "Oleksii", "Sergiienko", 1980))
+                .setTitle("My First Book")
+                .setPrintedBy("SelfPrint")
+                .setYear(2016)
+                .setVolume(50)
+                .setPrice(10f)
+                .setSoftBinding(true)
+                .build();
 
         bookShelf
                 .add(theBook)
                 .add(theBook2)
-                .add(new Book(
-                                new Author("The Second", "Andre", "Norton", 1960)
-                                , "Queen of Sun"
-                                , "SomeAgency"
-                                , 1990
-                                , 560
-                                , 220
-                                , true
-                        )
-                )
-        ;
-        printLine("3 books on shelf (2 of them are different instances of one book, see Id and binding:");
+                .add(new Book.Builder().build());
+
+        printLine("3 books on shelf:");
         printBooks(bookShelf);
 
         bookShelf.add(theBook);
@@ -63,16 +50,12 @@ class BooksRunner {
 
         bookShelf = new Books();
         printLine("Book shelf with one book:");
-        try {
-            bookShelf.add(
-                    new Book.Builder()
-                            .setAuthor(new Author("THEUNKNOWN", "The Author", "Unknown", 1980))
-                            .setPrice(.22f)
-                            .build()
-            );
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getLocalizedMessage());
-        }
+        bookShelf.add(
+                new Book.Builder()
+                        .setAuthor(new Author("THEUNKNOWN", "The Author", "Unknown", 1980))
+                        .setPrice(.22f)
+                        .build()
+        );
         printBooks(bookShelf);
 
     }
@@ -82,7 +65,7 @@ class BooksRunner {
         System.out.println();
     }
 
-    private static void printLine(String line){
+    private static void printLine(String line) {
         System.out.println(line);
     }
 }

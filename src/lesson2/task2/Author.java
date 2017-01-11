@@ -3,11 +3,11 @@ package lesson2.task2;
 /**
  * Created by Oleksii.Sergiienko on 19.12.2016.
  */
-class Author {
-    private String nick = "";
-    private String name = "";
-    private String surname = "";
-    private int yearOfBirth = 0;
+public class Author {
+    private final String nick;
+    private final String name;
+    private final String surname;
+    private final int yearOfBirth;
 
     /**
      * @param nickname
@@ -16,19 +16,15 @@ class Author {
      * @param yearOfBirth
      */
     Author(String nickname, String name, String surname, int yearOfBirth) {
-        this.nick = nickname;
-        this.name = name;
-        this.surname = surname;
-        this.yearOfBirth = yearOfBirth;
+        this.nick = nickname == null ? "" : nickname;
+        this.name = name == null ? "" : name;
+        this.surname = surname == null ? "" : surname;
+        this.yearOfBirth = yearOfBirth > 1000 ? yearOfBirth : 0;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return name + " " + surname + "(" + nick + ", " + yearOfBirth + ")";
-    }
-
-    public void setNick(String nick) {
-        this.nick = nick;
     }
 
     public String getNick() {

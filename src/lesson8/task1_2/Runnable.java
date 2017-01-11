@@ -3,19 +3,19 @@ package lesson8.task1_2;
 /**
  * Created by Oleksii.Sergiienko on 12/28/2016.
  */
-public class Runnable {
+class Runnable {
     public static void main(String[] args) {
         getChecksForStack("******** stack over Dynamic Array **********", new StackOverDynamicArray() );
         getChecksForStack("******** stack over Connected List **********", new StackOverConnectedList() );
         getChecksForStack("******** stack over Linked List **********", new StackOverLinkedList() );
 
-        getChecksForQueue("******** queue over Dynamic Array **********", new QueueOverDynamicArray() );
-        getChecksForQueue("******** queue over Connected List **********", new QueueOverConnectedList<Integer>() );
-        getChecksForQueue("******** queue over LinkedList **********", new QueueOverLinkedList() );
+        getChecksForQueue("******** queue over Dynamic Array **********", new QueueOverDynamicArray<>() );
+        getChecksForQueue("******** queue over Connected List **********", new QueueOverConnectedList<>() );
+        getChecksForQueue("******** queue over LinkedList **********", new QueueOverLinkedList<>() );
 
     }
-    
-    private static void getChecksForQueue(String title, Queue queue){
+
+    private static void getChecksForQueue(String title, Queue<Integer> queue){
         
         System.out.println("******** " + title + " **********");
         System.out.println("queue is empty? " + queue.isEmpty());
@@ -46,7 +46,7 @@ public class Runnable {
         }
     }
     
-    private static void getChecksForStack(String title, Stack stack){
+    private static void getChecksForStack(String title, Stack<Integer> stack){
 
         System.out.println("******** " + title + " **********");
         System.out.println("stack is empty? " + stack.isEmpty());
