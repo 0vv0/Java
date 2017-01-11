@@ -20,15 +20,14 @@ public class QueueOverConnectedList<T> implements Queue<T> {
 
     @Override
     public T pop() {
-        if(head==null){throw new NoSuchElementException();}
-        T element = head.getValue();
+        T element = peek();
         head = head.getNext();
         return element;
     }
 
     @Override
     public T peek() {
-        if(head==null){throw new NoSuchElementException();}
+        if(head==null){throw new NoSuchElementException("Queue is empty");}
         return head.getValue();
     }
 
@@ -48,11 +47,11 @@ public class QueueOverConnectedList<T> implements Queue<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new QueueOcerConnectedListIterator<>();
+        return new QueueOcerConnectedListIterator();
     }
 
-    private class QueueOcerConnectedListIterator<E> implements Iterator<E> {
-        private Node<E> current = (Node<E>) head;
+    private class QueueOcerConnectedListIterator implements Iterator<T> {
+        private Node<T> current = head;
 
         @Override
         public boolean hasNext() {
@@ -60,8 +59,8 @@ public class QueueOverConnectedList<T> implements Queue<T> {
         }
 
         @Override
-        public E next() {
-            E element = current.getValue();
+        public T next() {
+            T element = current.getValue();
             current = current.getNext();
             return element;
         }

@@ -21,6 +21,7 @@ public class Runnable {
         System.out.println("queue is empty? " + queue.isEmpty());
         System.out.println("queue size=" + queue.size());
 
+        System.out.println("Added: 7, 8, 9");
         queue.push(5).push(6).push(7);
 
         System.out.println("queue is empty? " + queue.isEmpty());
@@ -38,6 +39,7 @@ public class Runnable {
             System.out.println(e.getLocalizedMessage());
         }
 
+        System.out.println("Added: 1, 2, 3");
         queue.push(1).push(2).push(3);
         for (Object aQueue : queue) {
             System.out.println(aQueue);
@@ -50,6 +52,7 @@ public class Runnable {
         System.out.println("stack is empty? " + stack.isEmpty());
         System.out.println("stack size=" + stack.size());
 
+        System.out.println("Added: 7, 8, 9");
         stack.push(7).push(8).push(9);
 
         System.out.println("stack is empty? " + stack.isEmpty());
@@ -67,6 +70,7 @@ public class Runnable {
             System.out.println(e.getLocalizedMessage());
         }
 
+        System.out.println("Added: 1, 2, 3");
         stack.push(1).push(2).push(3);
         for (Object aStack : stack) {
             System.out.println(aStack);

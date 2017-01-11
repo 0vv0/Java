@@ -12,8 +12,7 @@ public class QueueOverDynamicArray<T> implements Queue<T> {
 
     @Override
     public T pop() {
-        if(list.length==0){throw new NoSuchElementException();}
-        T element = list[list.length-1];
+        T element = peek();
         T[] newList = (T[])new Object[list.length-1];
         System.arraycopy(list,0,newList,0,newList.length);
         list = newList;
@@ -22,7 +21,7 @@ public class QueueOverDynamicArray<T> implements Queue<T> {
 
     @Override
     public T peek() {
-        if(list.length==0){throw new NoSuchElementException();}
+        if(list.length==0){throw new NoSuchElementException("Queue is empty");}
         return list[list.length-1];
     }
 
@@ -52,10 +51,10 @@ public class QueueOverDynamicArray<T> implements Queue<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return new QueueOverDynamicArrayIterator<>();
+        return new QueueOverDynamicArrayIterator();
     }
 
-    private class QueueOverDynamicArrayIterator<E> implements Iterator<E>{
+    private class QueueOverDynamicArrayIterator implements Iterator<T>{
         private int index = list.length-1;
         @Override
         public boolean hasNext() {
@@ -63,8 +62,10 @@ public class QueueOverDynamicArray<T> implements Queue<T> {
         }
 
         @Override
-        public E next() {
-            return (E) list[index--];
+        public T next() {
+            if(hasNext()) {
+                return list[index--];
+            } else {throw new NoSuchElementException("Queue is empty");}
         }
     }
 }

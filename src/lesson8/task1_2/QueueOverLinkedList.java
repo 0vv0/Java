@@ -17,7 +17,7 @@ public class QueueOverLinkedList<T> implements Queue<T> {
 
     @Override
     public T peek() {
-        if(this.isEmpty()){throw new NoSuchElementException();}
+        if(this.isEmpty()){throw new NoSuchElementException("Queue is empty");}
         return list.peek();
     }
 
@@ -44,6 +44,22 @@ public class QueueOverLinkedList<T> implements Queue<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return list.iterator();
+        return new QueueOverLinkedListIterator();
+    }
+
+    private class QueueOverLinkedListIterator implements Iterator<T>{
+        Iterator<T> iterator = list.iterator();
+
+        @Override
+        public boolean hasNext() {
+            return iterator.hasNext();
+        }
+
+        @Override
+        public T next() {
+            if(hasNext()) {
+                return iterator.next();
+            } else {throw new NoSuchElementException("Queue is empty");}
+        }
     }
 }

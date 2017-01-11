@@ -44,6 +44,20 @@ public class StackOverLinkedList<T> implements Stack<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return list.iterator();
+        return new StackOverLinkedListIterator();
+    }
+
+    private class StackOverLinkedListIterator implements Iterator<T>{
+        Iterator<T> iterator = list.iterator();
+
+        @Override
+        public boolean hasNext() {
+            return iterator.hasNext();
+        }
+
+        @Override
+        public T next() {
+            return iterator.next();
+        }
     }
 }

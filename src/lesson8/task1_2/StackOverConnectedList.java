@@ -22,7 +22,7 @@ public class StackOverConnectedList<E> implements Stack<E> {
     @Override
     public E peek() {
         if (head == null) {
-            throw new NoSuchElementException();
+            throw new NoSuchElementException("Stack is empty");
         }
         return head.getValue();
     }
@@ -61,11 +61,11 @@ public class StackOverConnectedList<E> implements Stack<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        return new StackOverConnectedListIterator<>();
+        return new StackOverConnectedListIterator();
     }
 
-    private class StackOverConnectedListIterator<T> implements Iterator<T> {
-        Node<T> current = (Node<T>) head;
+    private class StackOverConnectedListIterator implements Iterator<E> {
+        Node<E> current = head;
 
         @Override
         public boolean hasNext() {
@@ -73,11 +73,11 @@ public class StackOverConnectedList<E> implements Stack<E> {
         }
 
         @Override
-        public T next() {
-            if (current == null) {
-                throw new NoSuchElementException();
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException("Stack is empty");
             }
-            T element = current.getValue();
+            E element = current.getValue();
             current = current.getNext();
             return element;
         }

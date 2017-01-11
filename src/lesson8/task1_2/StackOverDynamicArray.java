@@ -54,10 +54,10 @@ public class StackOverDynamicArray<T> implements Stack<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new StackOverDynamicArrayIterator<>();
+        return new StackOverDynamicArrayIterator();
     }
 
-    private class StackOverDynamicArrayIterator<E> implements Iterator<E> {
+    private class StackOverDynamicArrayIterator implements Iterator<T> {
         private int index = 0;
 
         @Override
@@ -66,8 +66,8 @@ public class StackOverDynamicArray<T> implements Stack<T> {
         }
 
         @Override
-        public E next() {
-            return (E) pop();
+        public T next() {
+            return pop();
         }
     }
 }
