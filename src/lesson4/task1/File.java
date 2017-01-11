@@ -3,7 +3,7 @@ package lesson4.task1;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class File implements IFileSystemObject, IReturnStringSize {
+public class File implements IFileSystemObject, IReturnStringSize, Comparable<IFileSystemObject> {
     private final String name;
     private int size;
 
@@ -30,5 +30,10 @@ public class File implements IFileSystemObject, IReturnStringSize {
     @Override
     public int getSize() {
         return size;
+    }
+
+    @Override
+    public int compareTo(IFileSystemObject o) {
+        return name.compareTo(o.getName());
     }
 }

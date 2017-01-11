@@ -5,6 +5,7 @@ package lesson4.task1;
  */
 public interface IReturnStringSize {
     default String getStringSize(int sizeInBytes){
+        assert sizeInBytes>=0;
         String s = sizeInBytes < 1024
                 ? sizeInBytes + " "
                 : sizeInBytes < 1024 * 1024

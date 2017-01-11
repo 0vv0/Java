@@ -1,48 +1,49 @@
 package lesson4.task1;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-public class Directory implements IFileSystemObject, IReturnStringSize {
+public class Directory implements IFileSystemObject, IReturnStringSize, Comparable<IFileSystemObject> {
     private static int counter = 0;
-    private String name;
+    private final String name;
     private final Set<IFileSystemObject> content = new HashSet<>();
 
     public Directory(String name) {
+        assert name != null && name.length() > 0;
         if (isNotGoodForName(name)) {
             throw new IllegalArgumentException("Bad directory name");
         }
         this.name = name;
+        counter++;
     }
 
-    public Directory(){
+    public Directory() {
         this.name = "dir" + counter++;
     }
 
-    public Directory(IFileSystemObject... fileSystemObject){
+    public Directory(IFileSystemObject... fileSystemObjects) {
         this();
-        for (IFileSystemObject iFS:fileSystemObject) {
-            add(iFS);
-        }
+        add(fileSystemObjects);
     }
 
-    Directory add(IFileSystemObject fileSystemObject) {
-        if (fileSystemObject == null) {
-            throw new IllegalArgumentException("Cann't add null element");
+    public Directory add(IFileSystemObject fileSystemObject) {
+        if (fileSystemObject != null
+                && fileSystemObject != this
+                && content.stream().noneMatch(x -> x.getName().equals(fileSystemObject.getName()))) {
+            content.add(fileSystemObject);
         }
-        if (fileSystemObject == this) {
-            throw new IllegalArgumentException("Cyclic dependency: cann't add myself into myself. ");
-        }
-        for (IFileSystemObject iFS : content) {
-            if (iFS.getName().equals(fileSystemObject.getName())) {
-                return this;
-            }
-        }
-        content.add(fileSystemObject);
+        return this;
+    }
 
+    public Directory add(IFileSystemObject... fileSystemObjects) {
+        Arrays.stream(fileSystemObjects)
+                .filter(Objects::nonNull)
+                .forEach(this::add);
         return this;
     }
 
@@ -51,10 +52,13 @@ public class Directory implements IFileSystemObject, IReturnStringSize {
         return content.stream().mapToInt(ISizable::getSize).sum();
     }
 
-
     @Override
     public String getName() {
         return name;
     }
 
+    @Override
+    public int compareTo(IFileSystemObject o) {
+        return name.compareTo(o.getName());
+    }
 }

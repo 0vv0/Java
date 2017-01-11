@@ -30,29 +30,23 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        Directory root = new Directory("root");
+        Directory root = new Directory("root");//dir0
 
-        Directory dir1 = new Directory();
+        Directory dir1 = new Directory();//dir1
         dir1.add(new File("f1", 10));  //10
         dir1.add(new File("f1", 10));  //10
         dir1.add(new File("f2", 20));  //30
         root.add(dir1);
 
-        root.add(new Directory("dir2"));
+        root.add(new Directory("dir2"));//dir2
 
         Directory dir3 = new Directory("dir3");
         dir3.add(new File("f3", 30));  //60
         dir3.add(new File("f4", 40));  //100
-        //dir3.add(dir1);
         root.add(dir3);
 
         root.add(new File("f5", 50));  //150
-
-        try{
-            //root.add(root);
-        } catch (IllegalArgumentException e){
-            e.printStackTrace();
-        }
+        root.add(root);//do nothing
 
         System.out.println(root.getSize());
 
