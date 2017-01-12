@@ -9,12 +9,6 @@ public class Author {
     private final String surname;
     private final int yearOfBirth;
 
-    /**
-     * @param nickname
-     * @param name
-     * @param surname
-     * @param yearOfBirth
-     */
     Author(String nickname, String name, String surname, int yearOfBirth) {
         this.nick = nickname == null ? "" : nickname;
         this.name = name == null ? "" : name;
