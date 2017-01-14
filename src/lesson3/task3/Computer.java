@@ -1,15 +1,19 @@
 package lesson3.task3;
 
+import org.jetbrains.annotations.Contract;
+
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
-class Computer implements IHardware {
+public class Computer implements IHardware, Iterable<IHardware> {
     private final Set<IHardware> list = new HashSet<>();
     private final String theName;
 
+    @Contract("null -> fail")
     Computer(String name) {
         if (name == null) {
             throw new IllegalArgumentException("Name is missed");
@@ -104,5 +108,22 @@ class Computer implements IHardware {
                 .filter(x -> x instanceof Memory)
                 .forEach(x -> System.out.println(((Memory) x).getType() + ": " + x.getName() + " has size: " + ((Memory) x).getSize()));
 
+    }
+
+    @Override
+    public Iterator<IHardware> iterator() {
+        return new Iterator<IHardware>() {
+            private Iterator<IHardware> iter = list.iterator();
+
+            @Override
+            public boolean hasNext() {
+                return iter.hasNext();
+            }
+
+            @Override
+            public IHardware next() {
+                return iter.next();
+            }
+        };
     }
 }

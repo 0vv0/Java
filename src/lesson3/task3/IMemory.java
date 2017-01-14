@@ -11,15 +11,11 @@ interface IMemory extends IHardware {
         return this;
     }
 
-    enum Type {
-        HDD, FDD, RAM
-    }
-
     Type getType();
 
     @Override
     default IHardware start() {
-        System.out.println(this.getType() + " " +getName() + ": started");
+        System.out.println(this.getType() + " " + getName() + ": started");
         return this;
     }
 
@@ -27,5 +23,9 @@ interface IMemory extends IHardware {
     default IHardware shutdown() {
         System.out.println(this.getType() + " " + getName() + ": stopped");
         return this;
+    }
+
+    enum Type {
+        RAM, HDD, FDD
     }
 }
