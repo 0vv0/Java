@@ -3,6 +3,7 @@ package lesson3.task2;
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
+
 class Runner {
     public static void main(String[] args) {
         Planet earth = new Planet();

@@ -61,7 +61,7 @@ class Text {
     }
 
     ArrayList<Sentence> get() {
-        return value;
+        return new ArrayList<>(value);
     }
 
     @Override

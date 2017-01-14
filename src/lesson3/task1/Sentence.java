@@ -3,8 +3,9 @@ package lesson3.task1;
 /**
  * Created by Oleksii.Sergiienko on 20.12.2016.
  */
-class Sentence {
-    //Создать  объект  класса Текст,  используя  классы  Предложение,  Слово. Методы: дополнить текст, вывести на консоль текст, заголовок текста.
+public class Sentence {
+    //Создать  объект  класса Текст,  используя  классы  Предложение,  Слово.
+    // Методы: дополнить текст, вывести на консоль текст, заголовок текста.
     private static int hashCounter = 0;
 
     private final String value;
