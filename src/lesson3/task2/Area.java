@@ -1,7 +1,5 @@
 package lesson3.task2;
 
-import org.junit.Test;
-
 /**
  * Created by Oleksii.Sergiienko on 12/25/2016.
  */
@@ -11,7 +9,7 @@ class Area implements IArea {
 
 
     Area(String name, Type type) {
-        if (name == null) {
+        if (name == null||type==null||name=="") {
             throw new IllegalArgumentException("Name is null");
         }
         this.name = name;
@@ -35,21 +33,5 @@ class Area implements IArea {
     @Override
     public Type getType() {
         return type;
-    }
-
-    @Test
-    void testGetType() {
-        assert getType().equals(type);
-    }
-
-    @Test
-    void testGetName() {
-        assert getName().equals(name);
-    }
-
-    @Test
-    void testInstantiation() {
-        assert name != null;
-        assert type != null;
     }
 }

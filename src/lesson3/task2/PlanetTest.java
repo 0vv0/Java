@@ -7,10 +7,18 @@ import org.junit.Test;
  * Created by default on 1/14/2017.
  */
 public class PlanetTest {
-    private Planet planet = new Planet("Test planet");
+    private Planet planet;
 
     @Before
     public void tearsUp() throws Exception {
+        try {
+            planet = new Planet();
+            planet = new Planet("Test planet");
+        }catch (Exception e){
+            assert false;
+        }
+
+
         planet.add(
                 new Area("Ocean1", IArea.Type.Ocean),
                 new Area("Ocean2", IArea.Type.Ocean),
