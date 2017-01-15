@@ -40,7 +40,7 @@ class Films {
         return this;
     }
 
-    List<Film> getByGenre(IGenred.Genre genre) {
+    List<Film> getByGenre(Genre genre) {
         List<Film> list = new ArrayList<>();
         films
                 .stream()

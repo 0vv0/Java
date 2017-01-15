@@ -12,10 +12,10 @@ class Film implements IGenred{
 
     private final String theName;
     private final int theYear;
-    private List<String> actors = new ArrayList<>();
-    private final IGenred.Genre theGenre;
+    private final List<String> actors = new ArrayList<>();
+    private final Genre theGenre;
 
-    public Film(String name, int year, IGenred.Genre genre) {
+    public Film(String name, int year, Genre genre) {
         isCorrect(name, year);
         this.theName = name;
         this.theYear = year;
@@ -23,15 +23,15 @@ class Film implements IGenred{
     }
 
     public Film(String name, int year) {
-        this(name, year, IGenred.Genre.UnKnown);
+        this(name, year, Genre.UnKnown);
     }
 
     public Film(String name) {
-        this(name, 0, IGenred.Genre.UnKnown);
+        this(name, 0, Genre.UnKnown);
     }
 
 
-    public IGenred.Genre getGenre() {
+    public Genre getGenre() {
         return theGenre;
     }
 
