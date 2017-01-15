@@ -26,7 +26,6 @@ class File implements IFileSystemObject, IReturnStringSize, Comparable<IFileSyst
         return name;
     }
 
-
     @Override
     public int getSize() {
         return size;
@@ -35,5 +34,10 @@ class File implements IFileSystemObject, IReturnStringSize, Comparable<IFileSyst
     @Override
     public int compareTo(IFileSystemObject o) {
         return name.compareTo(o.getName());
+    }
+
+    @Override
+    public String toString() {
+        return name + '(' + size + ")";
     }
 }

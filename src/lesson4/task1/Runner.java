@@ -34,22 +34,25 @@ class Runner {
 
         Directory dir1 = new Directory();//dir1
         dir1.add(new File("f1", 10));  //10
-        dir1.add(new File("f1", 10));  //10
+        //dir1.add(new File("f1", 10));  //10
         dir1.add(new File("f2", 20));  //30
-        root.add(dir1);
 
+        root.add(dir1);
         root.add(new Directory("dir2"));//dir2
 
-        Directory dir3 = new Directory("dir3");
+        Directory dir3 = new Directory();//dir3
         dir3.add(new File("f3", 30));  //60
         dir3.add(new File("f4", 40));  //100
+
+        Directory dir4 = new Directory("dir4");//dir4
+        dir4.add(new File("f5", 10), new File("f6", 10), new File("f7", 10));//130
+        dir3.add(dir4);
         root.add(dir3);
 
-        root.add(new File("f5", 50));  //150
-        root.add(root);//do nothing
+        root.add(new File("f8", 20));  //150
 
-        System.out.println(root.getSize());
-
+        System.out.println(root);
+        System.out.println("size == " + root.getSize());
     }
 
 }
