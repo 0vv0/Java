@@ -13,15 +13,8 @@ class Runner {
 // - в алфавитном порядке по убыванию.
     public static void main(String[] args) {
         Names names = new Names();
-        try {
-            System.out.printf(names.min());
-        } catch (NullPointerException e){
-            System.out.printf(e.toString());
-        }
-        finally {
-            System.out.printf("\n\n");
-        }
 
+        System.out.printf(names.min());
 
         names = new Names("Ivan", "Irene");
         names.add("Said").add("David").add("Anatolii").add("Anton").add("Andrew");

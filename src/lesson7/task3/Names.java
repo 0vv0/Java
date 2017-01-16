@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Oleksii.Sergiienko on 12/28/2016.
  */
-class Names {
+public class Names {
     private final List<String> names = new ArrayList<>();
 
     public Names() {
@@ -19,17 +19,13 @@ class Names {
 
     public Names(String... names) {
         for (String name : names) {
-            if (name != null) {
-                this.add(name);
-            }
+            this.add(name);
         }
     }
 
     public Names(List<String> names) {
         for (String name : names) {
-            if (name != null) {
-                this.add(name);
-            }
+            this.add(name);
         }
     }
 
@@ -76,7 +72,7 @@ class Names {
 
     public Names sort(Comparator<String> comparator) {
         if (comparator == null) {
-            return new Names();
+            throw new IllegalArgumentException("Comparator can't be NULL");
         }
         return new Names(names.stream().sorted(comparator).collect(Collectors.toList()));
     }
@@ -121,14 +117,12 @@ class Names {
         return new ArrayList<>(names);
     }
 
-    @Nullable
     public String min() {
-        return names.stream().min(String::compareTo).orElse(null);
+        return names.stream().min(String::compareTo).orElse("");
     }
 
-    @Nullable
     public String max() {
-        return names.stream().max(String::compareTo).orElse(null);
+        return names.stream().max(String::compareTo).orElse("");
     }
 
     @Override

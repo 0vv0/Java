@@ -23,7 +23,7 @@ class Runnable {
         System.out.println("queue is empty? " + queue.isEmpty());
         System.out.println("queue size=" + queue.size());
 
-        System.out.println("Added: 7, 8, 9");
+        System.out.println("Added: 5, 6, 7");
         queue.push(5).push(6).push(7);
 
         System.out.println("queue is empty? " + queue.isEmpty());

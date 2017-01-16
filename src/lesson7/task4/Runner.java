@@ -12,11 +12,13 @@ public class Runner {
 // Из исходного списка выбрать всех людей подросткового возраста (age >= 12 && age <= 17);
 // отсортировать по возрасту от старшего к младшему, в группах с одним возрастом - по имени в алфавитном порядке.
     public static void main(String[] args) {
-        List<Person> persons = new ArrayList<Person>(){
-            public String toString(){
-                StringJoiner sj = new StringJoiner("\n");
-                this.stream().forEach(x->sj.add(x.toString()));
-                return "-----------------\n" +sj.toString() + "\n******************\n";
+        List<Person> persons = new ArrayList<Person>() {
+            @Override
+            public String toString() {
+                StringJoiner sj = new StringJoiner("\n\t", "List of Persons:\n\t", "\nTotal: ");
+                this.forEach(x -> sj.add(x.toString()));
+                int i = this.size();
+                return sj.toString() + i + (i < 2 ? " person" : " persons") + "\n\n";
             }
 
         };
@@ -38,15 +40,15 @@ public class Runner {
 
 
         System.out.printf("Sorted by age and name:\n");
-        persons.stream().sorted(Person::compareTo).forEach(x-> System.out.printf(x.toString() + "\n"));
+        persons.stream().sorted(Person::compareTo).forEach(x -> System.out.printf("\t" + x.toString() + "\n"));
         System.out.printf("****************\n");
 
         System.out.printf("Select men from 12 to 17,\n sorted by age and name:\n");
         persons
                 .stream()
                 .sorted(Person::compareTo)
-                .filter(x->x.getSex()== Person.Sex.Male&&x.getAge()>=12&&x.getAge()<=17)
-                .forEach(x-> System.out.printf(x.toString() + "\n"));
+                .filter(x -> x.getSex() == Person.Sex.Male && x.getAge() >= 12 && x.getAge() <= 17)
+                .forEach(x -> System.out.printf("\t" + x.toString() + "\n"));
         System.out.printf("****************\n");
 
     }

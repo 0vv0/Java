@@ -3,7 +3,7 @@ package lesson8.task3;
 /**
  * Created by Oleksii.Sergiienko on 1/1/2017.
  */
-class Node<T> {
+public class Node<T> {
     private Node<T> previous;
     private T value;
     private Node<T> next;
