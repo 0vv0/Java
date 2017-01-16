@@ -17,7 +17,7 @@ class Runnable {
 
     }
 
-    private static void getChecksForQueue(String title, Queue<Integer> queue){
+    private static void getChecksForQueue(String title, DynamicStructure<Integer> queue){
         
         System.out.println("******** " + title + " **********");
         System.out.println("queue is empty? " + queue.isEmpty());
@@ -48,7 +48,7 @@ class Runnable {
         }
     }
     
-    private static void getChecksForStack(String title, Stack<Integer> stack){
+    private static void getChecksForStack(String title, DynamicStructure<Integer> stack){
 
         System.out.println("******** " + title + " **********");
         System.out.println("stack is empty? " + stack.isEmpty());

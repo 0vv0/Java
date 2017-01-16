@@ -8,4 +8,5 @@ public interface DynamicStructure<T> extends Iterable<T> {
     T peek();
     boolean isEmpty();
     int size();
+    DynamicStructure<T> push(T element);
 }
