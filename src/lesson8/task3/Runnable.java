@@ -14,11 +14,12 @@ public class Runnable {
 
         System.out.println("l - move left\nr - move right\n+ - light on\n- - light off\n? - light is on?\ns - stop\nnumber - answer");
         Scanner scanner = new Scanner(System.in);
-        String s = scanner.next();
+        String s = "";
 
+        label:
         while (scanner.hasNext()) {
-            if(scanner.hasNextInt()){
-                if(train.isLength(scanner.nextInt())) {
+            if (scanner.hasNextInt()) {
+                if (train.isLength(scanner.nextInt())) {
                     System.out.println("correct");
                     System.out.println(train);
                     break;
@@ -30,18 +31,24 @@ public class Runnable {
                 s = scanner.nextLine();
             }
 
-            if(s.equals("s")){
-                break;
-            }else if (s.equals("l")) {
-                train.moveLeft();
-            } else if (s.equals("r")) {
-                train.moveRight();
-            } else if (s.equals("+")) {
-                train.lightOn();
-            } else if (s.equals("-")) {
-                train.lightOff();
-            } else if (s.equals("?")) {
-                System.out.println(train.isLightOn());
+            switch (s) {
+                case "s":
+                    break label;
+                case "l":
+                    train.moveLeft();
+                    break;
+                case "r":
+                    train.moveRight();
+                    break;
+                case "+":
+                    train.lightOn();
+                    break;
+                case "-":
+                    train.lightOff();
+                    break;
+                case "?":
+                    System.out.println(train.isLightOn());
+                    break;
             }
         }
     }
