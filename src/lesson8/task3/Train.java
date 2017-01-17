@@ -1,8 +1,13 @@
 package lesson8.task3;
 
 /**
- * Created by Oleksii.Sergiienko on 1/1/2017.
+ * Created by Oleksii.Sergiienko on 1/17/2017.
  */
-public class Train<Boolean> {
-    private Node<Boolean> current;
+public interface Train{
+    Train moveLeft();
+    Train moveRight();
+    Train lightOn();
+    Train lightOff();
+    boolean isLightOn();
+    boolean isLength(int expectedLength);
 }
