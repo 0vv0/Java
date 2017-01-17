@@ -8,31 +8,29 @@ import java.util.StringJoiner;
  */
 public class BooleanTrain implements Train {
     private static Random random = new Random();
-    private Carriage cursor = new SleepingCarriage(random.nextBoolean());
-    private int length = 1;
+    private Carriage cursor;
+    private final int length;
 
-    public int getLength() {
+    private int getLength() {
         return length;
     }
 
-    public BooleanTrain(int maxLength) {
+    public BooleanTrain(final int maxLength) {
         if (maxLength < 1) {
             throw new IllegalArgumentException("one or more carriages");
         }
-        this.length = random.nextInt(maxLength)+1;
-        maxLength = this.length;
-        //Remember the fist Carriage
+        cursor = new SleepingCarriage(random.nextBoolean());
+        length = random.nextInt(maxLength)+1;
+
+        //Remember the first Carriage
         Carriage start = cursor;
-        while (maxLength-- > 0) {
+        for(int i=0;i<length-1;i++){
             cursor.setNext(new SleepingCarriage(random.nextBoolean()));
             cursor.getNext().setPrevious(cursor);
             cursor = cursor.getNext();
         }
         cursor.setNext(start);
         start.setPrevious(cursor);
-    }
-
-    public BooleanTrain(){
     }
 
     @Override
@@ -46,27 +44,27 @@ public class BooleanTrain implements Train {
     }
 
     @Override
-    public Train moveLeft() {
+    public void moveLeft() {
         cursor = cursor.getPrevious();
-        return this;
+//        return this;
     }
 
     @Override
-    public Train moveRight() {
+    public void moveRight() {
         cursor = cursor.getNext();
-        return this;
+//        return this;
     }
 
     @Override
-    public Train lightOn() {
+    public void lightOn() {
         cursor.setLight(true);
-        return this;
+//        return this;
     }
 
     @Override
-    public Train lightOff() {
+    public void lightOff() {
         cursor.setLight(false);
-        return this;
+//        return this;
     }
 
     @Override
@@ -75,7 +73,7 @@ public class BooleanTrain implements Train {
     }
 
     @Override
-    public boolean isLength(int expectedLength) {
+    public boolean isLength(final int expectedLength) {
         return expectedLength == length;
     }
 }

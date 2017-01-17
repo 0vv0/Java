@@ -1,5 +1,7 @@
 package lesson8.task3;
 
+import java.util.StringJoiner;
+
 /**
  * Created by Oleksii.Sergiienko on 1/17/2017.
  */
@@ -9,14 +11,21 @@ public class SleepingCarriage implements Carriage {
     private Carriage next;
 
     public SleepingCarriage(boolean light) {
-        previous = this;
+//        previous = this;
         this.light = light;
-        next = this;
+//        next = this;
     }
 
     @Override
     public String toString() {
-        return (previous==this?">":"<") + light + (next==this?"<":">");
+        String left = "!", right = "!";
+        if (previous != null) {
+            left = previous == this ? ">" : "<";
+        }
+        if (next != null) {
+            right = next == this ? "<" : ">";
+        }
+        return left + light + right;
     }
 
     @Override
