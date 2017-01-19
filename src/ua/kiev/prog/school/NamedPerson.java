@@ -1,4 +1,4 @@
-package ua.kiev.prog.summaryTask;
+package ua.kiev.prog.school;
 
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.

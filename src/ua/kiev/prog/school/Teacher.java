@@ -1,4 +1,4 @@
-package ua.kiev.prog.summaryTask;
+package ua.kiev.prog.school;
 
 import java.util.Random;
 
