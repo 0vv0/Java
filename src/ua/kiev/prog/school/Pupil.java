@@ -3,7 +3,7 @@ package ua.kiev.prog.school;
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
-public class Pupil extends NamedPerson implements IAnswer {
+public class Pupil extends NamedPerson implements Answerer {
     private NamedPerson mother;
     private NamedPerson father;
 

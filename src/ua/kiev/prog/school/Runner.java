@@ -9,7 +9,7 @@ class Runner {
         NamedPerson mom = new Parent("Silvia", "Sergiienko", "");
         NamedPerson dad = new Parent("Nicolai", "Sergiienko", "");
         Pupil oleksii = new Pupil("Oleksii", "Sergiienko", mom, dad);
-        ITeach teacher = new Teacher("Bohdan", "Vanchuhov");
+        Teacher teacher = new RandomTeacher("Bohdan", "Vanchuhov");
         TaskList taskList = new TaskList().add(
                 new Task("What is Interface in Java?"),
                 new Task("What is Static Method in Java?")
