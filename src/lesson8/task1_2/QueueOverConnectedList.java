@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  */
 public class QueueOverConnectedList<T> extends ConnectedList<T> {
     @Override
-    public DynamicStructure<T> push(T element) {
+    public ConnectedList<T> push(T element) {
         if (head == null) {
             head = new Node<>(element);
             return this;

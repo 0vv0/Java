@@ -5,7 +5,7 @@ package lesson8.task1_2;
  */
 public class QueueOverLinkedList<T> extends LinkedList<T> {
     @Override
-    public DynamicStructure<T> push(T element) {
+    public LinkedList<T> push(T element) {
         list.addLast(element);
         return this;
     }

@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  */
 public class QueueOverDynamicArray<T> extends DynamicArray<T> {
     @Override
-    public QueueOverDynamicArray<T> push(T element) {
+    public DynamicArray<T> push(T element) {
         list = Arrays.copyOf(list,list.length+1);
         list[list.length-1] = element;
         return this;

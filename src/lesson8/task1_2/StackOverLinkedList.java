@@ -6,7 +6,7 @@ package lesson8.task1_2;
  */
 public class StackOverLinkedList<T> extends LinkedList<T> {
     @Override
-    public DynamicStructure<T> push(T element) {
+    public LinkedList<T> push(T element) {
         list.addFirst(element);
         return this;
     }

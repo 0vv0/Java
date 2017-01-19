@@ -5,7 +5,7 @@ package lesson8.task1_2;
  */
 public class StackOverConnectedList<E> extends ConnectedList<E> {
     @Override
-    public DynamicStructure<E> push(E element) {
+    public ConnectedList<E> push(E element) {
         Node<E> elem = new Node<>(element);
         elem.setNext(head);
         head = elem;
