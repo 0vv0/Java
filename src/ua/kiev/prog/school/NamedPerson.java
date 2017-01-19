@@ -4,8 +4,8 @@ package ua.kiev.prog.school;
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
 public class NamedPerson {
-    private String name = null;
-    private String surname = null;
+    private String name;
+    private String surname;
 
     public NamedPerson(String name, String surname) {
         this.name = name;

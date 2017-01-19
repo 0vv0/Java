@@ -8,8 +8,6 @@ import java.util.*;
 public class Answers implements Iterable<TaskWithAnswer>{
     private List<TaskWithAnswer> answers = new ArrayList<>();
 
-    public Answers(){}
-
     public Answers addAnswer(Task task, String answer) {
         answers.add(new TaskWithAnswer(task).setAnswer(answer));
         return this;
