@@ -6,12 +6,9 @@ import java.util.*;
  * Created by Oleksii.Sergiienko on 1/4/2017.
  */
 public class Answers implements Iterable<TaskWithAnswer>{
-    private Pupil pupil;
     private List<TaskWithAnswer> answers = new ArrayList<>();
 
-    public Answers(Pupil pupil) {
-        this.pupil = pupil;
-    }
+    public Answers(){}
 
     public Answers addAnswer(Task task, String answer) {
         answers.add(new TaskWithAnswer(task).setAnswer(answer));
@@ -20,7 +17,7 @@ public class Answers implements Iterable<TaskWithAnswer>{
 
     @Override
     public String toString() {
-        StringJoiner sj = new StringJoiner("\n", "List of Answers of " + pupil.toString() + ":\n", "\n***************");
+        StringJoiner sj = new StringJoiner("\n", "Answers:\n", "\n***************");
         answers.stream()
                 .filter(Objects::nonNull)
                 .forEach(x -> sj.add(x.getTask() + " answer is:\n        " + x.getAnswer()));

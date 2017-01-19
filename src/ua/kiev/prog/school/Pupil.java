@@ -26,4 +26,34 @@ public class Pupil extends NamedPerson implements Answerer {
         return "This is my answer for : " + task;
     }
 
+    public static class Builder{
+        private String name;
+        private String surname;
+        private NamedPerson mom;
+        private NamedPerson dad;
+
+        public Builder() {
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setSurname(String surname) {
+            this.surname = surname;
+        }
+
+        public void setMom(NamedPerson mom) {
+            this.mom = mom;
+        }
+
+        public void setDad(NamedPerson dad) {
+            this.dad = dad;
+        }
+
+        public Pupil build(){
+            return new Pupil(name, surname, mom, dad);
+        }
+    }
+
 }

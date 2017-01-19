@@ -8,12 +8,9 @@ import java.util.StringJoiner;
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
 public class Marks implements Iterable<TaskWithAnswer> {
-    private Pupil pupil;
     private HashMap<TaskWithAnswer, Mark> marks = new HashMap<>();
 
-    public Marks(Pupil pupil) {
-        this.pupil = pupil;
-    }
+    public Marks(){}
 
     public Marks setMark(TaskWithAnswer taskWithAnswer, Mark mark){
         marks.put(taskWithAnswer, mark);
@@ -22,7 +19,7 @@ public class Marks implements Iterable<TaskWithAnswer> {
 
     @Override
     public  String toString(){
-        StringJoiner sj = new StringJoiner("\n", "List of Marks of "+ pupil + ":\n", "\n***************");
+        StringJoiner sj = new StringJoiner("\n", "Marks:\n", "\n***************");
         marks.entrySet().forEach(x->sj.add(x.getKey().getTask()+ " mark is: " +x.getValue()));
         return sj.toString();
     }

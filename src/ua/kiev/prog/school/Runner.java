@@ -14,13 +14,13 @@ class Runner {
                 new Task("What is Interface in Java?"),
                 new Task("What is Static Method in Java?")
         );
-        Answers answers = new Answers(oleksii);
+        Answers oleksiiAnswers = new Answers();
         for(Task task:taskList){
-            answers.addAnswer(task, oleksii.getAnswer(task));
+            oleksiiAnswers.addAnswer(task, oleksii.getAnswer(task));
         }
 
-        Marks marks = new Marks(oleksii);
-        for(TaskWithAnswer taskWithAnswer:answers){
+        Marks marks = new Marks();
+        for(TaskWithAnswer taskWithAnswer:oleksiiAnswers){
             marks.setMark(taskWithAnswer, teacher.mark(taskWithAnswer));
         }
 
@@ -29,7 +29,7 @@ class Runner {
         System.out.println(oleksii.toString());
         System.out.println(teacher);
         System.out.println(taskList);
-        System.out.println(answers);
+        System.out.println(oleksiiAnswers);
         System.out.println(marks);
     }
 }

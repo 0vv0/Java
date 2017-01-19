@@ -24,4 +24,22 @@ public class NamedPerson {
     public String toString() {
         return getSurname() + " " + getName();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NamedPerson)) return false;
+
+        NamedPerson that = (NamedPerson) o;
+
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        return getSurname() != null ? getSurname().equals(that.getSurname()) : that.getSurname() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = 31 * result + (getSurname() != null ? getSurname().hashCode() : 0);
+        return result;
+    }
 }
