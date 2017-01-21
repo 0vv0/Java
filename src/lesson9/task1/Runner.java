@@ -4,7 +4,6 @@ import lesson7.task4.Person;
 
 import java.time.LocalTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by Oleksii.Sergiienko on 12/28/2016.
@@ -47,7 +46,6 @@ public class Runner {
                 ));
         t2 =  LocalTime.now();
         System.out.println("Delta == " + (t2.getNano()-t1.getNano()));
-
         System.out.println();
         System.out.println("Select all alphabetically");
         t3 =  LocalTime.now();
@@ -58,6 +56,7 @@ public class Runner {
         personMap.values().forEach(x-> System.out.println(x));
         t4 =  LocalTime.now();
         System.out.println("Delta == " + (t4.getNano()-t3.getNano()));
+
 
     }
 }

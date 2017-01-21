@@ -10,10 +10,17 @@ class Films {
     private final List<Film> films = new ArrayList<>();
 
     Films(){
-
     }
 
     Films(Film... films) {
+        for (Film film : films) {
+            if (film != null) {
+                this.films.add(film);
+            }
+        }
+    }
+
+    Films(List<Film> films) {
         for (Film film : films) {
             if (film != null) {
                 this.films.add(film);
@@ -40,40 +47,40 @@ class Films {
         return this;
     }
 
-    List<Film> getByGenre(Genre genre) {
+    Films getByGenre(Genre genre) {
         List<Film> list = new ArrayList<>();
         films
                 .stream()
                 .filter(x -> x.getGenre() == genre)
                 .forEach(list::add);
-        return list;
+        return new Films(list);
     }
 
-    List<Film> getByYears(int from, int to) {
+    Films getByYears(int from, int to) {
         List<Film> list = new ArrayList<>();
         films
                 .stream()
                 .filter(x -> x.getYear() >= from && x.getYear() <= to)
                 .forEach(list::add);
-        return list;
+        return new Films(list);
     }
 
-    List<Film> getByActor(String actorName) {
+    Films getByActor(String actorName) {
         List<Film> list = new ArrayList<>();
         films
                 .stream()
                 .filter(x -> x.isPlayActor(actorName))
                 .forEach(list::add);
-        return list;
+        return new Films(list);
     }
 
-    List<Film> getByActors(String... actorsNames) {
+    Films getByActors(String... actorsNames) {
         List<Film> list = new ArrayList<>();
         films
                 .stream()
                 .filter(x -> x.isPlayActors(actorsNames))
                 .forEach(list::add);
-        return list;
+        return new Films(list);
     }
 
     @Override

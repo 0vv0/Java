@@ -11,23 +11,6 @@ public abstract class DynamicArray<T> implements DynamicStructure<T> {
     protected T[] list = (T[]) new Object[0];
 
     @Override
-    public T pop() {
-        T element = peek();
-        T[] newList = (T[]) new Object[list.length - 1];
-        System.arraycopy(list, 1, newList, 0, newList.length);
-        list = newList;
-        return element;
-    }
-
-    @Override
-    public T peek() {
-        if (list.length == 0) {
-            throw new NoSuchElementException("Dynamic array is empty");
-        }
-        return list[0];
-    }
-
-    @Override
     public boolean isEmpty() {
         return list.length == 0;
     }
@@ -35,6 +18,16 @@ public abstract class DynamicArray<T> implements DynamicStructure<T> {
     @Override
     public int size() {
         return list.length;
+    }
+
+    @Override
+    public boolean contains(T element) {
+        for (T elem : list) {
+            if (elem.equals(element)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

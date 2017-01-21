@@ -10,19 +10,6 @@ public abstract class LinkedList<T> implements DynamicStructure<T> {
     protected java.util.LinkedList<T> list = new java.util.LinkedList<>();
 
     @Override
-    public T pop() {
-        return list.pop();
-    }
-
-    @Override
-    public T peek() {
-        if (this.isEmpty()) {
-            throw new NoSuchElementException("Linked list is empty");
-        }
-        return list.peek();
-    }
-
-    @Override
     public boolean isEmpty() {
         return list.isEmpty();
     }
@@ -30,6 +17,11 @@ public abstract class LinkedList<T> implements DynamicStructure<T> {
     @Override
     public int size() {
         return list.size();
+    }
+
+    @Override
+    public boolean contains(T element) {
+        return list.contains(element);
     }
 
     @Override

@@ -23,7 +23,6 @@ class FilmsRunner {
         filmList.add(zve1).add(zve3).add(zve5).add(zve6).add(scaryMovie);
 
         System.out.println(filmList);
-        filmList.getByGenre(Genre.Fantastic).forEach(System.out::println);
     }
 
 }

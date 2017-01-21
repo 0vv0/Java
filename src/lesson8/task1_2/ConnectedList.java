@@ -8,21 +8,7 @@ import java.util.NoSuchElementException;
  */
 public abstract class ConnectedList<T> implements DynamicStructure<T> {
     protected Node<T> head;
-
-    @Override
-    public T pop() {
-        T element = peek();
-        head = head.getNext();
-        return element;
-    }
-
-    @Override
-    public T peek() {
-        if (head == null) {
-            throw new NoSuchElementException("Connected list is empty");
-        }
-        return head.getValue();
-    }
+    protected Node<T> tail;
 
     @Override
     public boolean isEmpty() {
@@ -32,12 +18,24 @@ public abstract class ConnectedList<T> implements DynamicStructure<T> {
     @Override
     public int size() {
         int count = 0;
-        Node<T> element = head;
-        while (element != null) {
+        Node<T> cursor = head;
+        while (cursor != null) {
             count++;
-            element = element.getNext();
+            cursor = cursor.getNext();
         }
         return count;
+    }
+
+    @Override
+    public boolean contains(T element) {
+        Node<T> cursor = head;
+        while (cursor != null) {
+            if (cursor.getValue().equals(element)) {
+                return true;
+            }
+            cursor = cursor.getNext();
+        }
+        return false;
     }
 
     @Override
@@ -61,4 +59,38 @@ public abstract class ConnectedList<T> implements DynamicStructure<T> {
             }
         };
     }
+
+    protected static class Node<T> {
+        private final T data;
+        private Node<T> previous;
+        private Node<T> next;
+
+        Node(T element) {
+            this.data = element;
+        }
+
+        T getValue() {
+            return data;
+        }
+
+        Node<T> getNext() {
+            return next;
+        }
+
+        Node<T> setNext(Node<T> next) {
+            this.next = next;
+            return this;
+        }
+
+        Node<T> getPrevious() {
+            return previous;
+        }
+
+        Node<T> setPrevious(Node<T> next) {
+            this.previous = previous;
+            return this;
+        }
+    }
 }
+
+
