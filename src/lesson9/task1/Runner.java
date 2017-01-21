@@ -33,9 +33,9 @@ public class Runner {
         persons.add(new Person("Alex", 17, Person.Sex.Male));
 
 
-        LocalTime t1,t2,t3,t4;
+        LocalTime t1, t2, t3, t4;
         System.out.println("Select all alphabetically");
-        t1 =  LocalTime.now();
+        t1 = LocalTime.now();
         persons.stream()
                 .sorted(((o1, o2) -> o1.getName().compareTo(o2.getName())))
                 .map(x -> x.getName())
@@ -44,19 +44,25 @@ public class Runner {
                         persons.parallelStream()
                                 .filter(y -> y.getName().equals(x)).findFirst().get()
                 ));
-        t2 =  LocalTime.now();
-        System.out.println("Delta == " + (t2.getNano()-t1.getNano()));
+        t2 = LocalTime.now();
+        System.out.println("Delta == " + ((t2.getNano() - t1.getNano())) / 1_000_000);
         System.out.println();
         System.out.println("Select all alphabetically");
-        t3 =  LocalTime.now();
+        t3 = LocalTime.now();
         Map<String, Person> personMap = new TreeMap<>();
-        for (Person p:persons) {
+        for (Person p : persons) {
             personMap.putIfAbsent(p.getName(), p);
         }
-        personMap.values().forEach(x-> System.out.println(x));
-        t4 =  LocalTime.now();
-        System.out.println("Delta == " + (t4.getNano()-t3.getNano()));
+        personMap.values().forEach(x -> System.out.println(x));
+        t4 = LocalTime.now();
+        System.out.println("Delta == " + ((t4.getNano() - t3.getNano())) / 1_000_000);
 
+        t3 = LocalTime.now();
+        Map<String, Person> personsMap = new TreeMap<>();
+        persons.forEach(x -> personsMap.putIfAbsent(x.getName(), x));
 
+        personsMap.values().forEach(x -> System.out.println(x));
+        t4 = LocalTime.now();
+        System.out.println("Delta == " + ((t4.getNano() - t3.getNano())) / 1_000_000);
     }
 }
