@@ -10,28 +10,36 @@ public class Runner {
 //    Задан List<Integer> list. Посчитать, сколько раз в списке попадается каждое число.
 //            Подсказка: HashMap.
 
-    private static List<Integer> list;
+    private List<Integer> list;
+    private Map<Integer, Integer> counter = new HashMap<>();
 
     public static void main(String[] args) {
-        Map<Integer, Integer> counter = new HashMap<>();
-        fill(100, 10);//100 elements from 0 to 10
 
-        //count numbers
-        for (int i : list) {
-            counter.put(i, counter.getOrDefault(i, 0) + 1);
-        }
+        Runner runner = new Runner();
+        runner.fill(1000, 10);//100 elements from 0 to 10
+        runner.count();
 
-        //list.forEach(x-> System.out.println(x));
-        counter.entrySet()
+        runner.getCounter().entrySet()
                 .forEach(x -> System.out.println("Number of " + x.getKey() + "==" + x.getValue()));
 
     }
 
-    public static void fill(int count, int limit) {
+    public void fill(int count, int limit) {
         list = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < count; i++) {
             list.add(random.nextInt(limit) + 1000);
         }
+    }
+
+    public void count() {
+        //count numbers
+        for (int i : list) {
+            counter.put(i, counter.getOrDefault(i, 0) + 1);
+        }
+    }
+
+    public Map<Integer, Integer> getCounter() {
+        return counter;
     }
 }

@@ -28,17 +28,17 @@ public class Runner {
     public static void main(String[] args) {
         fill();
         System.out.println("\n12-17:");
-        persons.stream()
+        persons.stream()//O(N)
                 .filter(x -> x.getAge() >= 12 && x.getAge() <= 17)
                 .forEach(System.out::println);
         System.out.println("\n18+:");
-        persons.stream()
+        persons.stream()//O(N+N*log N)
                 .filter(x -> x.getAge() > 18)
                 .sorted((x, y) -> x.getAge() - y.getAge())
                 .limit(1)
                 .forEach(System.out::println);
         System.out.println("\n-18:");
-        persons.stream()
+        persons.stream()//O(N+N*log N)
                 .filter(x -> x.getAge() < 18)
                 .sorted((x, y) -> y.getAge() - x.getAge())
                 .limit(1)
