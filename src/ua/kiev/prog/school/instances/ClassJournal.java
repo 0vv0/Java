@@ -5,11 +5,12 @@ import ua.kiev.prog.school.interfaces.*;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
-public class ClassJournal implements Iterable<Pupil>, Journal {
+public class ClassJournal implements Journal {
     private Map<Pupil, Map<Answer, Mark>> journal = new HashMap<>();
     private Teacher master;
 
@@ -41,13 +42,58 @@ public class ClassJournal implements Iterable<Pupil>, Journal {
 
     @Override
     public Map<Task, Mark> showMarks(@NotNull Pupil pupil) {
-        return null;
+        Map<Task, Mark> marks = new HashMap<>();
+        journal.getOrDefault(pupil, new HashMap<>()).forEach((x, y) -> marks.put(x.getTask(), y));
+        return marks;
     }
 
     @Override
     public Journal add(@NotNull Pupil pupil) {
         journal.putIfAbsent(pupil, new HashMap<>());
         return this;
+    }
+
+    @Override
+    public Journal set(Pupil pupil, Map<Answer, Mark> map) {
+        journal.put(pupil, map);
+        return this;
+    }
+
+    @Override
+    public Journal filterByPupil(Predicate<Pupil> filter) {
+        Journal j = new ClassJournal(master);
+        journal.keySet().stream().filter(filter).forEach(x -> j.set(x, journal.get(x)));
+        return j;
+    }
+
+    @Override
+    public Journal filterByTask(Predicate<Task> filter) {
+        Journal j = new ClassJournal(master);
+        for (Pupil pupil : journal.keySet()) {
+            Map<Answer, Mark> marks = journal.get(pupil);
+            marks.keySet().stream()
+                    .filter(x -> filter.test(x.getTask()))
+                    .forEach(x -> j.setMark(pupil, x, marks.get(x)));
+        }
+        return j;
+    }
+
+
+    @Override
+    public Journal filterByMark(Predicate<Mark> filter) {
+        Journal j = new ClassJournal(master);
+        for (Pupil pupil : journal.keySet()) {
+            Map<Answer, Mark> marks = journal.get(pupil);
+            marks.keySet().stream()
+                    .filter(x -> filter.test(marks.get(x)))
+                    .forEach(x -> j.setMark(pupil, x, marks.get(x)));
+        }
+        return j;
+    }
+
+    @Override
+    public Map<Pupil, Map<Answer, Mark>> getJournal() {
+        return new HashMap<>(journal);
     }
 
     @Override
