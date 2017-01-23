@@ -12,10 +12,4 @@ public interface Task {
     Task setAnswer(@NotNull String answer);
 
     String getAnswer();
-
-    Task setMark(@NotNull Mark mark);
-
-    default Mark getMark() {
-        return Mark.UNMARKED;
-    }
 }

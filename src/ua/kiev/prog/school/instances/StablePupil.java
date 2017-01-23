@@ -27,7 +27,7 @@ public class StablePupil extends NamedPerson implements Pupil {
 
     @Override
     public Task giveAnswer(@NotNull Task task) {
-        return new SimpleTask(task.getQuestion()).setAnswer("I know this simpleTask. Just a minute....");
+        return new SimpleTask(task.getQuestion()).setAnswer("I know this task. Just a minute....");
     }
 
     public static class Builder{

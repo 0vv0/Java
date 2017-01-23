@@ -9,7 +9,6 @@ import ua.kiev.prog.school.interfaces.Task;
 public class SimpleTask implements Task {
     private final String text;
     private String answer = "";
-    private Mark mark = Mark.UNMARKED;
 
     public SimpleTask(String text) {
         if (text == null) {
@@ -29,7 +28,7 @@ public class SimpleTask implements Task {
 
     @Override
     public Task setAnswer(@NotNull String answer) {
-        this.answer = answer != null ? answer : "";
+        this.answer = answer;
         return this;
     }
 
@@ -60,15 +59,4 @@ public class SimpleTask implements Task {
         return result;
     }
 
-    @Override
-    public SimpleTask setMark(@NotNull Mark mark) {
-        if(mark == null){throw new IllegalArgumentException("You missed your mark");}
-        this.mark = mark;
-        return this;
-    }
-
-    @Override
-    public Mark getMark() {
-        return mark;
-    }
 }

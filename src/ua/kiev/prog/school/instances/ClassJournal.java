@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
 public class ClassJournal implements Iterable<Pupil>, Journal {
-    private Map<Pupil, List<Task>> journal = new HashMap<>();
+    private Map<Pupil, Map<Task, Mark>> journal = new HashMap<>();
 
     @Override
     public Iterator<Pupil> iterator() {
@@ -43,21 +43,23 @@ public class ClassJournal implements Iterable<Pupil>, Journal {
 
     @Override
     public Journal add(@NotNull Pupil pupil) {
-        journal.putIfAbsent(pupil, new ArrayList<>());
+        journal.putIfAbsent(pupil, new HashMap<>());
         return this;
     }
 
     @Override
     public Journal add(@NotNull Pupil pupil, @NotNull Task task) {
         add(pupil);
-        journal.get(pupil).add(task);
+        journal.get(pupil).putIfAbsent(task, Mark.UNMARKED);
         return this;
     }
 
     @Override
     public Journal add(@NotNull Pupil pupil, @NotNull List<Task> tasks) {
         add(pupil);
-        journal.get(pupil).addAll(tasks);
+        for (Task task : tasks) {
+            journal.get(pupil).putIfAbsent(task, Mark.UNMARKED);
+        }
         return this;
     }
 
@@ -70,12 +72,13 @@ public class ClassJournal implements Iterable<Pupil>, Journal {
     @Override
     public Journal setMark(@NotNull Pupil pupil, @NotNull Task task, @NotNull Mark mark) {
         add(pupil);
-        journal.get(pupil).add(task.setMark(mark));
+        journal.get(pupil).put(task, mark);
         return this;
     }
 
     @Override
     public Journal clearTasksFor(@NotNull Pupil pupil) {
+        journal.put(pupil, new HashMap<>());
         return this;
     }
 }
