@@ -1,8 +1,11 @@
 package ua.kiev.prog.school.instances;
 
 
+import org.jetbrains.annotations.NotNull;
+import ua.kiev.prog.school.interfaces.Journal;
 import ua.kiev.prog.school.interfaces.Pupil;
 import ua.kiev.prog.school.interfaces.ResultViewer;
+import ua.kiev.prog.school.interfaces.Task;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
@@ -20,12 +23,12 @@ public class Parent extends NamedPerson implements ResultViewer{
     }
 
     @Override
-    public void viewResult(ClassJournal journal, Pupil pupil) {
-        System.out.println(journal.answersFor(pupil));
+    public void viewResult(@NotNull Journal journal, @NotNull Pupil pupil) {
+        System.out.println(journal.showMarks(pupil));
     }
 
     @Override
-    public void viewResult(ClassJournal journal, Pupil pupil, Task task) {
-
+    public void viewResult(@NotNull Journal journal, @NotNull Pupil pupil, Task task) {
+        System.out.println(journal.showMarks(pupil));
     }
 }

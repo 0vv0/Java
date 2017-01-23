@@ -1,5 +1,6 @@
 package ua.kiev.prog.school.instances;
 
+import ua.kiev.prog.school.interfaces.Task;
 import ua.kiev.prog.school.interfaces.Teacher;
 
 import java.util.Random;
@@ -15,7 +16,7 @@ public class RandomTeacher extends NamedPerson implements Teacher {
 
     @Override
     public Mark mark(Task task) {
-        task.getAnswer();
+
         switch (new Random().nextInt(12) + 1) {
             default:
                 return Mark.F;
@@ -40,6 +41,6 @@ public class RandomTeacher extends NamedPerson implements Teacher {
 
     @Override
     public Task createTask(String taskText) {
-        return new Task(taskText);
+        return new SimpleTask(taskText);
     }
 }

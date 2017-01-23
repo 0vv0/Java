@@ -1,6 +1,8 @@
 package ua.kiev.prog.school.instances;
 
+import org.jetbrains.annotations.NotNull;
 import ua.kiev.prog.school.interfaces.Pupil;
+import ua.kiev.prog.school.interfaces.Task;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
@@ -24,8 +26,8 @@ public class StablePupil extends NamedPerson implements Pupil {
     }
 
     @Override
-    public Task getAnswer(Task task) {
-        return new Task(task.getTask()).setAnswer("I know this task. Just a minute....");
+    public Task giveAnswer(@NotNull Task task) {
+        return new SimpleTask(task.getQuestion()).setAnswer("I know this simpleTask. Just a minute....");
     }
 
     public static class Builder{

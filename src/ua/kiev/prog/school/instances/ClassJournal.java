@@ -1,7 +1,9 @@
 package ua.kiev.prog.school.instances;
 
+import org.jetbrains.annotations.NotNull;
 import ua.kiev.prog.school.interfaces.Journal;
 import ua.kiev.prog.school.interfaces.Pupil;
+import ua.kiev.prog.school.interfaces.Task;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -10,32 +12,7 @@ import java.util.function.Consumer;
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
 public class ClassJournal implements Iterable<Pupil>, Journal {
-    private Map<Pupil, MarkedAnswers> journal = new HashMap<>();
-
-    ClassJournal add(Pupil pupil, MarkedAnswers answers){
-        journal.put(pupil, answers);
-        return this;
-    }
-
-    ClassJournal add(Pupil pupil, Task task, Mark mark){
-        MarkedAnswers markedAnswers = journal.getOrDefault(pupil, new MarkedAnswers());
-        markedAnswers.writeMark(task, mark);
-        journal.put(pupil, markedAnswers);
-        return this;
-    }
-
-    public ClassJournal remove(Pupil pupil){
-        journal.remove(pupil);
-        return this;
-    }
-
-    public MarkedAnswers answersFor(Pupil pupil){
-        return journal.get(pupil);
-    }
-
-    public Set<Pupil> getAll(){
-        return new HashSet<>(journal.keySet());
-    }
+    private Map<Pupil, List<Task>> journal = new HashMap<>();
 
     @Override
     public Iterator<Pupil> iterator() {
@@ -58,8 +35,47 @@ public class ClassJournal implements Iterable<Pupil>, Journal {
         };
     }
 
+
     @Override
-    public MarkedAnswers showMarks(Pupil pupil) {
+    public Map<Task, Mark> showMarks(@NotNull Pupil pupil) {
         return null;
+    }
+
+    @Override
+    public Journal add(@NotNull Pupil pupil) {
+        journal.putIfAbsent(pupil, new ArrayList<>());
+        return this;
+    }
+
+    @Override
+    public Journal add(@NotNull Pupil pupil, @NotNull Task task) {
+        add(pupil);
+        journal.get(pupil).add(task);
+        return this;
+    }
+
+    @Override
+    public Journal add(@NotNull Pupil pupil, @NotNull List<Task> tasks) {
+        add(pupil);
+        journal.get(pupil).addAll(tasks);
+        return this;
+    }
+
+    @Override
+    public Journal remove(@NotNull Pupil pupil) {
+        journal.remove(pupil);
+        return this;
+    }
+
+    @Override
+    public Journal setMark(@NotNull Pupil pupil, @NotNull Task task, @NotNull Mark mark) {
+        add(pupil);
+        journal.get(pupil).add(task.setMark(mark));
+        return this;
+    }
+
+    @Override
+    public Journal clearTasksFor(@NotNull Pupil pupil) {
+        return this;
     }
 }
