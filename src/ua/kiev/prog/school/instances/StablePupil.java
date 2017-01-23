@@ -1,6 +1,8 @@
 package ua.kiev.prog.school.instances;
 
 import org.jetbrains.annotations.NotNull;
+import ua.kiev.prog.school.interfaces.Answer;
+import ua.kiev.prog.school.interfaces.Person;
 import ua.kiev.prog.school.interfaces.Pupil;
 import ua.kiev.prog.school.interfaces.Task;
 
@@ -8,29 +10,29 @@ import ua.kiev.prog.school.interfaces.Task;
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
 public class StablePupil extends NamedPerson implements Pupil {
-    private NamedPerson mother;
-    private NamedPerson father;
+    private Person mother;
+    private Person father;
 
-    public StablePupil(String name, String surname, NamedPerson mother, NamedPerson father) {
+    public StablePupil(String name, String surname, Person mother, Person father) {
         super(name, surname);
         this.mother = mother;
         this.father = father;
     }
 
-    public NamedPerson getMother() {
+    public Person getMother() {
         return mother;
     }
 
-    public NamedPerson getFather() {
+    public Person getFather() {
         return father;
     }
 
     @Override
-    public Task giveAnswer(@NotNull Task task) {
-        return new SimpleTask(task.getQuestion()).setAnswer("I know this task. Just a minute....");
+    public Answer giveAnswer(@NotNull Task task) {
+        return new StableAnswer(task).save("I know this task. Just a minute....");
     }
 
-    public static class Builder{
+    public static class Builder {
         private String name;
         private String surname;
         private NamedPerson mom;
@@ -52,7 +54,7 @@ public class StablePupil extends NamedPerson implements Pupil {
             this.dad = dad;
         }
 
-        public StablePupil build(){
+        public StablePupil build() {
             return new StablePupil(name, surname, mom, dad);
         }
     }

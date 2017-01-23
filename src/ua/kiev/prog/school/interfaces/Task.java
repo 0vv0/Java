@@ -8,8 +8,4 @@ import ua.kiev.prog.school.instances.Mark;
  */
 public interface Task {
     String getQuestion();
-
-    Task setAnswer(@NotNull String answer);
-
-    String getAnswer();
 }

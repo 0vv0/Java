@@ -20,8 +20,14 @@ public interface Journal {
 
     Journal remove(@NotNull Pupil pupil);
 
-    Journal setMark(@NotNull Pupil pupil, @NotNull Task task, @NotNull Mark mark);
+    Journal setMark(@NotNull Pupil pupil, @NotNull Map<Answer, Mark> marks);
+
+    Journal setMark(@NotNull Pupil pupil, @NotNull Answer answer, @NotNull Mark mark);
 
     Journal clearTasksFor(@NotNull Pupil pupil);
+
+    Teacher getMaster();
+
+    Journal setMaster(@NotNull Teacher teacher);
 
 }

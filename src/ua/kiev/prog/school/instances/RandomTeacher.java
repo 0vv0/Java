@@ -1,9 +1,10 @@
 package ua.kiev.prog.school.instances;
 
+import ua.kiev.prog.school.interfaces.Answer;
 import ua.kiev.prog.school.interfaces.Task;
 import ua.kiev.prog.school.interfaces.Teacher;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
@@ -15,7 +16,7 @@ public class RandomTeacher extends NamedPerson implements Teacher {
     }
 
     @Override
-    public Mark mark(Task task) {
+    public Mark mark(Answer answer) {
 
         switch (new Random().nextInt(12) + 1) {
             default:
@@ -37,6 +38,15 @@ public class RandomTeacher extends NamedPerson implements Teacher {
                 return Mark.A;
 
         }
+    }
+
+    @Override
+    public Map<Answer, Mark> mark(Set<Answer> answers) {
+        Map<Answer, Mark> marks = new HashMap<>();
+        for (Answer answer : answers) {
+            marks.put(answer, mark(answer));
+        }
+        return marks;
     }
 
     @Override
