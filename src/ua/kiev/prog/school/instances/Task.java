@@ -3,16 +3,30 @@ package ua.kiev.prog.school.instances;
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
-public class Task{
+public class Task {
     private final String text;
+    private String answer;
 
     public Task(String text) {
         this.text = text;
     }
 
-    @Override
-    public String toString(){
+    public String getTask() {
         return text;
+    }
+
+    public Task setAnswer(String answer) {
+        this.answer = answer;
+        return this;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    @Override
+    public String toString() {
+        return text + "\nAnswer:\n" + answer;
     }
 
     @Override
@@ -22,11 +36,11 @@ public class Task{
 
         Task task = (Task) o;
 
-        return text != null ? text.equals(task.toString()) : task.toString() == null;
+        return text != null ? text.equals(task.text) : task.text == null;
     }
 
     @Override
     public int hashCode() {
-        return text != null ? toString().hashCode() : 0;
+        return text != null ? text.hashCode() : 0;
     }
 }

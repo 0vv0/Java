@@ -7,14 +7,16 @@ import java.util.StringJoiner;
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
-public class MarkedAnswers implements Iterable<TaskWithAnswer> {
-    private HashMap<TaskWithAnswer, Mark> marks = new HashMap<>();
+public class MarkedAnswers implements Iterable<Task> {
+    private HashMap<Task, Mark> marks = new HashMap<>();
 
-    public MarkedAnswers(){}
-
-    public MarkedAnswers setMark(TaskWithAnswer taskWithAnswer, Mark mark){
-        marks.put(taskWithAnswer, mark);
+    public MarkedAnswers writeMark(Task task, Mark mark){
+        marks.put(task, mark);
         return this;
+    }
+
+    public Mark showMark(Task task){
+        return marks.getOrDefault(task, Mark.UNMARKED);
     }
 
     @Override
@@ -25,16 +27,16 @@ public class MarkedAnswers implements Iterable<TaskWithAnswer> {
     }
 
     @Override
-    public Iterator<TaskWithAnswer> iterator() {
-        return new Iterator<TaskWithAnswer>() {
-            private Iterator<TaskWithAnswer> iter = marks.keySet().iterator();
+    public Iterator<Task> iterator() {
+        return new Iterator<Task>() {
+            private Iterator<Task> iter = marks.keySet().iterator();
             @Override
             public boolean hasNext() {
                 return iter.hasNext();
             }
 
             @Override
-            public TaskWithAnswer next() {
+            public Task next() {
                 return iter.next();
             }
         };

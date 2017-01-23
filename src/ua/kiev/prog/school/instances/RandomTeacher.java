@@ -9,13 +9,13 @@ import java.util.Random;
  */
 public class RandomTeacher extends NamedPerson implements Teacher {
 
-
     public RandomTeacher(String name, String surname) {
         super(name, surname);
     }
 
     @Override
-    public Mark mark(TaskWithAnswer task) {
+    public Mark mark(Task task) {
+        task.getAnswer();
         switch (new Random().nextInt(12) + 1) {
             default:
                 return Mark.F;
@@ -36,5 +36,10 @@ public class RandomTeacher extends NamedPerson implements Teacher {
                 return Mark.A;
 
         }
+    }
+
+    @Override
+    public Task createTask(String taskText) {
+        return new Task(taskText);
     }
 }

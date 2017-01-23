@@ -1,9 +1,11 @@
 package ua.kiev.prog.school.instances;
 
+import ua.kiev.prog.school.interfaces.Person;
+
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
-public class NamedPerson {
+public class NamedPerson implements Person {
     private String name;
     private String surname;
 
@@ -12,10 +14,12 @@ public class NamedPerson {
         this.surname = surname;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getSurname() {
         return surname;
     }

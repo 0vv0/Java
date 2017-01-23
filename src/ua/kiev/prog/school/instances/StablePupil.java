@@ -24,8 +24,8 @@ public class StablePupil extends NamedPerson implements Pupil {
     }
 
     @Override
-    public String getAnswer(Task task) {
-        return "This is my answer for : " + task;
+    public Task getAnswer(Task task) {
+        return new Task(task.getTask()).setAnswer("I know this task. Just a minute....");
     }
 
     public static class Builder{
@@ -33,9 +33,6 @@ public class StablePupil extends NamedPerson implements Pupil {
         private String surname;
         private NamedPerson mom;
         private NamedPerson dad;
-
-        public Builder() {
-        }
 
         public void setName(String name) {
             this.name = name;
