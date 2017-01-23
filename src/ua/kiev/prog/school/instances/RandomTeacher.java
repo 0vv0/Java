@@ -1,4 +1,6 @@
-package ua.kiev.prog.school;
+package ua.kiev.prog.school.instances;
+
+import ua.kiev.prog.school.interfaces.Teacher;
 
 import java.util.Random;
 

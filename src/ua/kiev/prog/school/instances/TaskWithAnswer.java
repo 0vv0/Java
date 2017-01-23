@@ -1,4 +1,4 @@
-package ua.kiev.prog.school;
+package ua.kiev.prog.school.instances;
 
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.
@@ -11,7 +11,7 @@ public class TaskWithAnswer {
         this.task = task;
     }
 
-    TaskWithAnswer setAnswer(String answer){
+    public TaskWithAnswer setAnswer(String answer){
         this.answer = answer;
         return this;
     }

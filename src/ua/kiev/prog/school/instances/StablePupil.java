@@ -1,13 +1,15 @@
-package ua.kiev.prog.school;
+package ua.kiev.prog.school.instances;
+
+import ua.kiev.prog.school.interfaces.Pupil;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
-public class Pupil extends NamedPerson implements Answerer {
+public class StablePupil extends NamedPerson implements Pupil {
     private NamedPerson mother;
     private NamedPerson father;
 
-    public Pupil(String name, String surname, NamedPerson mother, NamedPerson father) {
+    public StablePupil(String name, String surname, NamedPerson mother, NamedPerson father) {
         super(name, surname);
         this.mother = mother;
         this.father = father;
@@ -51,8 +53,8 @@ public class Pupil extends NamedPerson implements Answerer {
             this.dad = dad;
         }
 
-        public Pupil build(){
-            return new Pupil(name, surname, mom, dad);
+        public StablePupil build(){
+            return new StablePupil(name, surname, mom, dad);
         }
     }
 

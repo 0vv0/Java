@@ -1,14 +1,17 @@
 package ua.kiev.prog.school;
 
+import ua.kiev.prog.school.instances.*;
+import ua.kiev.prog.school.interfaces.Teacher;
+
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
 class Runner {
     public static void main(String[] args) {
 
-        NamedPerson mom = new Parent("Silvia", "Sergiienko", "");
-        NamedPerson dad = new Parent("Nicolai", "Sergiienko", "");
-        Pupil oleksii = new Pupil("Oleksii", "Sergiienko", mom, dad);
+        NamedPerson mom = new Burger("Silvia", "Sergiienko", "");
+        NamedPerson dad = new Burger("Nicolai", "Sergiienko", "");
+        StablePupil oleksii = new StablePupil("Oleksii", "Sergiienko", mom, dad);
         Teacher teacher = new RandomTeacher("Bohdan", "Vanchuhov");
         TaskList taskList = new TaskList().add(
                 new Task("What is Interface in Java?"),
@@ -19,9 +22,9 @@ class Runner {
             oleksiiAnswers.addAnswer(task, oleksii.getAnswer(task));
         }
 
-        Marks marks = new Marks();
+        MarkedAnswers markedAnswers = new MarkedAnswers();
         for(TaskWithAnswer taskWithAnswer:oleksiiAnswers){
-            marks.setMark(taskWithAnswer, teacher.mark(taskWithAnswer));
+            markedAnswers.setMark(taskWithAnswer, teacher.mark(taskWithAnswer));
         }
 
         System.out.println(mom);
@@ -30,6 +33,6 @@ class Runner {
         System.out.println(teacher);
         System.out.println(taskList);
         System.out.println(oleksiiAnswers);
-        System.out.println(marks);
+        System.out.println(markedAnswers);
     }
 }

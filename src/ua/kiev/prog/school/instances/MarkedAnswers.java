@@ -1,4 +1,4 @@
-package ua.kiev.prog.school;
+package ua.kiev.prog.school.instances;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,12 +7,12 @@ import java.util.StringJoiner;
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
-public class Marks implements Iterable<TaskWithAnswer> {
+public class MarkedAnswers implements Iterable<TaskWithAnswer> {
     private HashMap<TaskWithAnswer, Mark> marks = new HashMap<>();
 
-    public Marks(){}
+    public MarkedAnswers(){}
 
-    public Marks setMark(TaskWithAnswer taskWithAnswer, Mark mark){
+    public MarkedAnswers setMark(TaskWithAnswer taskWithAnswer, Mark mark){
         marks.put(taskWithAnswer, mark);
         return this;
     }

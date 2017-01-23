@@ -1,4 +1,4 @@
-package ua.kiev.prog.school;
+package ua.kiev.prog.school.instances;
 
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.

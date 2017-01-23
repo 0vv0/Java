@@ -1,4 +1,4 @@
-package ua.kiev.prog.school;
+package ua.kiev.prog.school.instances;
 
 import java.io.Serializable;
 import java.util.ArrayList;
