@@ -22,6 +22,7 @@ public class ClassJournal implements Journal {
     public Iterator<Pupil> iterator() {
         return new Iterator<Pupil>() {
             private Iterator<Pupil> iterator = journal.keySet().iterator();
+
             @Override
             public boolean hasNext() {
                 return iterator.hasNext();
@@ -38,7 +39,6 @@ public class ClassJournal implements Journal {
             }
         };
     }
-
 
     @Override
     public Map<Task, Mark> showMarks(@NotNull Pupil pupil) {
@@ -77,7 +77,6 @@ public class ClassJournal implements Journal {
         }
         return j;
     }
-
 
     @Override
     public Journal filterByMark(Predicate<Mark> filter) {
@@ -120,7 +119,7 @@ public class ClassJournal implements Journal {
 
     @Override
     public Journal setMark(@NotNull Pupil pupil, @NotNull Map<Answer, Mark> marks) {
-        marks.keySet().forEach(x->setMark(pupil, x, marks.get(x)));
+        marks.keySet().forEach(x -> setMark(pupil, x, marks.get(x)));
         return this;
     }
 
@@ -153,7 +152,7 @@ public class ClassJournal implements Journal {
         StringJoiner sj = new StringJoiner("\n");
         journal
                 .forEach(
-                        (x,y)->sj
+                        (x, y) -> sj
                                 .add(x.toString())
                                 .add("\t" + y));
         return "Master " + master + ":\n" + sj;

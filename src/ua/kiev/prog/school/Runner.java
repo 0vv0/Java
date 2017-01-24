@@ -5,7 +5,6 @@ import ua.kiev.prog.school.interfaces.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
@@ -59,12 +58,7 @@ class Runner {
         System.out.println(journalOfJavaOOPCourse);
 
 
-        Journal newJournal = journalOfJavaOOPCourse.filterByMark(new Predicate<Mark>() {
-            @Override
-            public boolean test(Mark mark) {
-                return mark == Mark.UNMARKED;
-            }
-        });
+        Journal newJournal = journalOfJavaOOPCourse.filterByMark(x -> x == Mark.UNMARKED);
         System.out.println();
         System.out.println(newJournal);
     }
