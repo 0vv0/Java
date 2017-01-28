@@ -16,7 +16,7 @@ public class Runner {
     public static void main(String[] args) {
 
         Runner runner = new Runner();
-        runner.fill(1000, 10);//100 elements from 0 to 10
+        runner.fill(1000, 11);//1000 elements from 0 to 10
         runner.count();
 
         runner.getCounter().entrySet()
@@ -28,7 +28,7 @@ public class Runner {
         list = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < count; i++) {
-            list.add(random.nextInt(limit) + 1000);
+            list.add(random.nextInt(limit));
         }
     }
 

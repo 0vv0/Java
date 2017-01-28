@@ -1,5 +1,6 @@
 package lesson6.task1;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * Created by Oleksii.Sergiienko on 12/26/2016.
  */
-class Film implements Genred {
+public class Film implements Genreable, Serializable {
 //            1. Film: название, год выпуска, список имен актеров, список жанров.
 
     private final String theName;
@@ -35,22 +36,22 @@ class Film implements Genred {
         return theGenre;
     }
 
-    String getName() {
+    public String getName() {
         return theName;
     }
 
-    int getYear() {
+    public int getYear() {
         return theYear;
     }
 
-    Film addActor(String name) {
+    public Film addActor(String name) {
         if (name != null && name.length() > 0) {
             actors.add(name);
         }
         return this;
     }
 
-    Film removeActor(String name) {
+    public Film removeActor(String name) {
         for (String actor : actors) {
             if (actor.equals(name)) {
                 actors.remove(actor);
@@ -60,14 +61,14 @@ class Film implements Genred {
         return this;
     }
 
-    boolean isPlayActor(String actorName) {
+    public boolean isPlayActor(String actorName) {
         return actors
                 .stream()
                 .filter(x -> x.equals(actorName))
                 .count() > 0;
     }
 
-    boolean isPlayActors(String... actorsNames) {
+    public boolean isPlayActors(String... actorsNames) {
         for (String name : actorsNames) {
             if(actors
                     .stream()
@@ -77,7 +78,7 @@ class Film implements Genred {
         return true;
     }
 
-    List<String> getListOfActors() {
+    public List<String> getListOfActors() {
         return new ArrayList<>(actors);
     }
 
