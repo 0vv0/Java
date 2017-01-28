@@ -1,5 +1,6 @@
 package lesson7.task4;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
@@ -43,6 +44,7 @@ public class Runner {
         persons.stream().sorted(Person::compareTo).forEach(x -> System.out.printf("\t" + x.toString() + "\n"));
         System.out.printf("****************\n");
 
+        LocalTime lt1 = LocalTime.now();
         System.out.printf("Select men from 12 to 17,\n sorted by age and name:\n");
         persons
                 .stream()
@@ -50,6 +52,19 @@ public class Runner {
                 .filter(x -> x.getSex() == Person.Sex.Male && x.getAge() >= 12 && x.getAge() <= 17)
                 .forEach(x -> System.out.printf("\t" + x.toString() + "\n"));
         System.out.printf("****************\n");
+        LocalTime lt2 = LocalTime.now();
+        System.out.println("dt=" + (lt2.getNano() - lt1.getNano()) / 1000);
+
+        lt1 = LocalTime.now();
+        System.out.printf("Select men from 12 to 17,\n sorted by age and name:\n");
+        persons
+                .stream()
+                .filter(x -> x.getSex() == Person.Sex.Male && x.getAge() >= 12 && x.getAge() <= 17)
+                .sorted(Person::compareTo)
+                .forEach(x -> System.out.printf("\t" + x.toString() + "\n"));
+        System.out.printf("****************\n");
+        lt2 = LocalTime.now();
+        System.out.println("dt=" + (lt2.getNano() - lt1.getNano()) / 1000);
 
     }
 }

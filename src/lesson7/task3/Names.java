@@ -1,11 +1,10 @@
 package lesson7.task3;
 
-import com.sun.istack.internal.Nullable;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -115,6 +114,10 @@ public class Names {
 
     public List<String> toList() {
         return new ArrayList<>(names);
+    }
+
+    public List<String> filter(Predicate<String> filter) {
+        return names.stream().filter(filter::test).collect(Collectors.toList());
     }
 
     public String min() {

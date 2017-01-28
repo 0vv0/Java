@@ -4,7 +4,10 @@ import ua.kiev.prog.school.interfaces.Answer;
 import ua.kiev.prog.school.interfaces.Task;
 import ua.kiev.prog.school.interfaces.Teacher;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.

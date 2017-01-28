@@ -1,6 +1,5 @@
 package lesson1.task1.A;
 
-import java.lang.*;
 import java.util.Scanner;
 
 /**

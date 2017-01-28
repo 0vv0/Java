@@ -1,7 +1,5 @@
 package lesson8.task3;
 
-import java.util.StringJoiner;
-
 /**
  * Created by Oleksii.Sergiienko on 1/17/2017.
  */
@@ -29,16 +27,6 @@ public class SleepingCarriage implements Carriage {
     }
 
     @Override
-    public void setPrevious(Carriage previous) {
-        this.previous = previous;
-    }
-
-    @Override
-    public void setNext(Carriage next) {
-        this.next = next;
-    }
-
-    @Override
     public void setLight(boolean light) {
         this.light = light;
     }
@@ -54,7 +42,17 @@ public class SleepingCarriage implements Carriage {
     }
 
     @Override
+    public void setPrevious(Carriage previous) {
+        this.previous = previous;
+    }
+
+    @Override
     public Carriage getNext() {
         return next;
+    }
+
+    @Override
+    public void setNext(Carriage next) {
+        this.next = next;
     }
 }

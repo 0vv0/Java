@@ -76,14 +76,14 @@ public class Books {
         switch (fieldName.toLowerCase().intern()) {
             case "author":
                 for (Book book : books) {
-                    if (book.getAuthor().equals((Author) object)) {
+                    if (book.getAuthor().equals(object)) {
                         list.add(book);
                     }
                 }
                 return list;
             case "agency":
                 for (Book book : books) {
-                    if (book.getPrintedBy().equals((String) object)) {
+                    if (book.getPrintedBy().equals(object)) {
                         list.add(book);
                     }
                 }

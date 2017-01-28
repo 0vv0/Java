@@ -2,7 +2,7 @@ package lesson2.task2;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Created by Oleksii.Sergiienko on 1/12/2017.

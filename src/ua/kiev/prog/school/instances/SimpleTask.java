@@ -1,6 +1,5 @@
 package ua.kiev.prog.school.instances;
 
-import org.jetbrains.annotations.NotNull;
 import ua.kiev.prog.school.interfaces.Task;
 
 /**

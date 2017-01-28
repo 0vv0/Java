@@ -94,7 +94,7 @@ public class AreaTest {
             throw new AssertionError("equals doesn't work as it should be");
         }
         if (new Area("area", IArea.Type.Ocean)
-                .equals((Area) new AreaExtender("areaEx", IArea.Type.Island))) {
+                .equals(new AreaExtender("areaEx", IArea.Type.Island))) {
             throw new AssertionError("equals doesn't work as it should be");
         }
     }

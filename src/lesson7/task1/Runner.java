@@ -14,10 +14,14 @@ class Runner {
                 new Pair<>("Mom", 59),
                 new Pair<>("Dad", 60)
         );
+        Pair.Builder<String, Integer> personBuilder = new Pair.Builder<>();
+        personBuilder.setLeft("Left").setRight(212);
+        Pair<String, Integer> person = personBuilder.build();
 
         System.out.println(pairOfInts);
         System.out.println(pairOfInts.getLeft());
         System.out.println(pairOfInts.getRight());
+        System.out.println(person);
 
         System.out.println(new Pair<String, Integer>("Hello", 12));
         System.out.printf(parents.toString());
