@@ -101,6 +101,6 @@ public class Film implements Genreable, Serializable {
 
     @Override
     public String toString() {
-        return theName + " (" + theYear + ", " + theGenre + ")";
+        return theName + " (" + theYear + ", " + theGenre + ")" + actors;
     }
 }
