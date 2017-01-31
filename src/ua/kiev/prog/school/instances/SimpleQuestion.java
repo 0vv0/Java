@@ -1,14 +1,14 @@
 package ua.kiev.prog.school.instances;
 
-import ua.kiev.prog.school.interfaces.Task;
+import ua.kiev.prog.school.interfaces.Question;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
-public class SimpleTask implements Task {
+public class SimpleQuestion implements Question {
     private final String text;
 
-    public SimpleTask(String text) {
+    public SimpleQuestion(String text) {
         if (text == null) {
             throw new IllegalArgumentException("Question missed");
         }
@@ -29,9 +29,9 @@ public class SimpleTask implements Task {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof SimpleTask)) return false;
+        if (!(o instanceof SimpleQuestion)) return false;
 
-        SimpleTask that = (SimpleTask) o;
+        SimpleQuestion that = (SimpleQuestion) o;
 
         return text.equals(that.text);
     }
@@ -39,5 +39,10 @@ public class SimpleTask implements Task {
     @Override
     public int hashCode() {
         return text.hashCode();
+    }
+
+    @Override
+    public int compareTo(Question o) {
+        return this.text.compareTo(o.getQuestion());
     }
 }

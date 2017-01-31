@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import ua.kiev.prog.school.interfaces.Answer;
 import ua.kiev.prog.school.interfaces.Person;
 import ua.kiev.prog.school.interfaces.Pupil;
-import ua.kiev.prog.school.interfaces.Task;
+import ua.kiev.prog.school.interfaces.Question;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
@@ -28,8 +28,13 @@ public class StablePupil extends NamedPerson implements Pupil {
     }
 
     @Override
-    public Answer giveAnswer(@NotNull Task task) {
-        return new StableAnswer(task).save("I know this task. Just a minute....");
+    public Answer giveAnswer(@NotNull Question question) {
+        return new Answer() {
+            @Override
+            public String getAnswer() {
+                return "My stable answer - I KNOW ALL!!!";
+            }
+        };
     }
 
     public static class Builder {

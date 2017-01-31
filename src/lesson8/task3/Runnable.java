@@ -12,7 +12,7 @@ public class Runnable {
 //        System.out.println(train);
 //        System.out.println(((BooleanTrain) train).getLength());
 
-        System.out.println("l - move left\nr - move right\n+ - light on\n- - light off\n? - light is on?\ns - stop\nnumber - answer");
+        System.out.println("l - move left\nr - move right\n+ - light on\n- - light off\n? - light is on?\ns - stop\nnumber - Answer");
         Scanner scanner = new Scanner(System.in);
         String s = "";
 

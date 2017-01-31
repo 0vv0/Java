@@ -1,10 +1,12 @@
 package ua.kiev.prog.school;
 
+import sun.reflect.generics.tree.Tree;
 import ua.kiev.prog.school.instances.*;
 import ua.kiev.prog.school.interfaces.*;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
@@ -18,42 +20,42 @@ class Runner {
         Pupil olesia = new StablePupil("Olesia", "Sergiienko", mom, dad);
         Teacher teacher = new RandomTeacher("Bohdan", "Vanchuhov");
 
-        Task task1 = teacher.createTask("Who is on duty today?");
-        Task task2 = teacher.createTask("Java is OOP?");
-        Task task3 = teacher.createTask("What is the capital of Ukraine?");
+        Question question1 = teacher.ask();
+        Question question2 = teacher.ask("Java is OOP?");
+        Question question3 = teacher.ask("What is the capital of Ukraine?");
 
         Journal journalOfJavaOOPCourse = new ClassJournal(teacher);
         journalOfJavaOOPCourse.add(oleksii).add(olesia);
 
-        List<Task> oleksiisTasks = new ArrayList<>();
-        List<Task> olesiasTasks = new ArrayList<>();
+        Set<Question> oleksiisQuestions = new TreeSet<>();
+        Set<Question> olesiasQuestions = new TreeSet<>();
 
-        System.out.println(task1);
-        System.out.println(task2);
-        System.out.println(task3);
+        System.out.println(question1);
+        System.out.println(question2);
+        System.out.println(question3);
 
-        oleksiisTasks.add(task1);
-        oleksiisTasks.add(task2);
-        System.out.println(oleksiisTasks);
+        oleksiisQuestions.add(question1);
+        oleksiisQuestions.add(question2);
+        System.out.println(oleksiisQuestions);
 
-        olesiasTasks.add(task1);
-        olesiasTasks.add(task3);
-        System.out.println(olesiasTasks);
+        olesiasQuestions.add(question1);
+        olesiasQuestions.add(question3);
+        System.out.println(olesiasQuestions);
 
-        journalOfJavaOOPCourse.add(oleksii, oleksiisTasks);
-        journalOfJavaOOPCourse.add(olesia, olesiasTasks);
+        journalOfJavaOOPCourse.add(oleksii, oleksiisQuestions);
+        journalOfJavaOOPCourse.add(olesia, olesiasQuestions);
         System.out.println();
         System.out.println(journalOfJavaOOPCourse);
 
-        journalOfJavaOOPCourse.setMark(oleksii, oleksii.giveAnswer(task1), teacher.mark(oleksii.giveAnswer(task1)) );
+        journalOfJavaOOPCourse.setMark(oleksii, oleksii.giveAnswer(question1), teacher.mark(oleksii.giveAnswer(question1)) );
         System.out.println();
         System.out.println(journalOfJavaOOPCourse);
 
-        journalOfJavaOOPCourse.setMark(oleksii, oleksii.giveAnswer(task2), teacher.mark(oleksii.giveAnswer(task2)) );
+        journalOfJavaOOPCourse.setMark(oleksii, oleksii.giveAnswer(question2), teacher.mark(oleksii.giveAnswer(question2)) );
         System.out.println();
         System.out.println(journalOfJavaOOPCourse);
 
-        journalOfJavaOOPCourse.add(olesia, olesiasTasks );
+        journalOfJavaOOPCourse.add(olesia, olesiasQuestions);
         System.out.println();
         System.out.println(journalOfJavaOOPCourse);
 

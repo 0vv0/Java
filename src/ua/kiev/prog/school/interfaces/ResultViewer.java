@@ -12,7 +12,7 @@ public interface ResultViewer {
         return journal.showMarks(pupil).toString();
     }
 
-    default String viewResult(@NotNull Journal journal, @NotNull Pupil pupil, Task task) {
-        return journal.showMarks(pupil).getOrDefault(task, Mark.UNMARKED).toString();
+    default String viewResult(@NotNull Journal journal, @NotNull Pupil pupil, Question question) {
+        return journal.showMarks(pupil).getOrDefault(question, Mark.UNMARKED).toString();
     }
 }

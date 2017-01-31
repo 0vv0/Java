@@ -6,16 +6,28 @@ import ua.kiev.prog.school.interfaces.*;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
-public class ClassJournal implements Journal {
-    private Map<Pupil, Map<Answer, Mark>> journal = new HashMap<>();
+public final class ClassJournal implements Journal {
     private Teacher master;
+    private Map<Pupil, Set<MarkedTask>> journal = new HashMap<>();
 
     public ClassJournal(@NotNull Teacher master) {
         this.master = master;
+    }
+
+    private boolean isAlreadyAsked(@NotNull Pupil pupil, @NotNull Question question) {
+        if (contains(pupil)) {
+            for (MarkedTask mt : journal.get(pupil)) {
+                if (mt.getQuestion().equals(question)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
@@ -41,39 +53,80 @@ public class ClassJournal implements Journal {
     }
 
     @Override
-    public Map<Task, Mark> showMarks(@NotNull Pupil pupil) {
-        Map<Task, Mark> marks = new HashMap<>();
-        journal.getOrDefault(pupil, new HashMap<>()).forEach((x, y) -> marks.put(x.getTask(), y));
+    public Map<Question, Mark> showMarks(@NotNull Pupil pupil) {
+        Map<Question, Mark> marks = new TreeMap<>();
+        if (contains(pupil)) {
+            journal.get(pupil).forEach(x -> marks.put(x.getQuestion(), x.getMark()));
+        }
         return marks;
     }
 
     @Override
     public Journal add(@NotNull Pupil pupil) {
-        journal.putIfAbsent(pupil, new HashMap<>());
+        journal.putIfAbsent(pupil, new TreeSet<>());
         return this;
     }
 
     @Override
-    public Journal set(Pupil pupil, Map<Answer, Mark> map) {
-        journal.put(pupil, map);
+    public Journal add(@NotNull Pupil pupil, @NotNull Question question) {
+        if (contains(pupil)) {
+            for (MarkedTask mt : journal.get(pupil)) {
+                if (mt.getQuestion().equals(question)) {
+                    return this;
+                }
+            }
+        } else {
+            add(pupil);
+        }
+        journal.get(pupil).add(new SimpleMarkedTask(question));
+        return this;
+    }
+
+    @Override
+    public Journal add(@NotNull Pupil pupil, @NotNull Question question, @NotNull Mark mark) {
+        add(pupil);
+        MarkedTask mt = journal.get(pupil).stream()
+                .filter(x->x.getQuestion().equals(question))
+                .findFirst()
+                .orElse(new SimpleMarkedTask(question).setMark(mark));
+        add(pupil,mt);
+        return this;
+    }
+
+    @Override
+    public Journal add(@NotNull Pupil pupil, @NotNull MarkedTask markedTask) {
+        if(!contains(pupil)){add(pupil);}
+        journal.get(pupil).add(markedTask);
+        return this;
+    }
+
+    @Override
+    public Journal add(@NotNull Pupil pupil, @NotNull Set<MarkedTask> markedTasks) {
+        if(!contains(pupil)){add(pupil);}
+        journal.get(pupil).addAll(markedTasks);
+        return this;
+    }
+
+    @Override
+    public Journal add(@NotNull Question question) {
+        journal.keySet().forEach(x -> add(x, question));
         return this;
     }
 
     @Override
     public Journal filterByPupil(Predicate<Pupil> filter) {
         Journal j = new ClassJournal(master);
-        journal.keySet().stream().filter(filter).forEach(x -> j.set(x, journal.get(x)));
+        journal.keySet().parallelStream().filter(filter).forEach(x -> j.add(x, journal.get(x)));
         return j;
     }
 
     @Override
-    public Journal filterByTask(Predicate<Task> filter) {
+    public Journal filterByTask(Predicate<Question> filter) {
         Journal j = new ClassJournal(master);
         for (Pupil pupil : journal.keySet()) {
-            Map<Answer, Mark> marks = journal.get(pupil);
-            marks.keySet().stream()
-                    .filter(x -> filter.test(x.getTask()))
-                    .forEach(x -> j.setMark(pupil, x, marks.get(x)));
+            j.add(pupil, journal.get(pupil).stream()
+                    .filter(x -> filter.test(x.getQuestion()))
+                    .collect(Collectors.toSet()));
         }
         return j;
     }
@@ -82,33 +135,16 @@ public class ClassJournal implements Journal {
     public Journal filterByMark(Predicate<Mark> filter) {
         Journal j = new ClassJournal(master);
         for (Pupil pupil : journal.keySet()) {
-            Map<Answer, Mark> marks = journal.get(pupil);
-            marks.keySet().stream()
-                    .filter(x -> filter.test(marks.get(x)))
-                    .forEach(x -> j.setMark(pupil, x, marks.get(x)));
+            j.add(pupil, journal.get(pupil).stream()
+                    .filter(x -> filter.test(x.getMark()))
+                    .collect(Collectors.toSet()));
         }
         return j;
     }
 
     @Override
-    public Map<Pupil, Map<Answer, Mark>> getJournal() {
-        return new HashMap<>(journal);
-    }
-
-    @Override
-    public Journal add(@NotNull Pupil pupil, @NotNull Task task) {
-        add(pupil);
-        journal.get(pupil).putIfAbsent(new StableAnswer(task), Mark.UNMARKED);
-        return this;
-    }
-
-    @Override
-    public Journal add(@NotNull Pupil pupil, @NotNull List<Task> tasks) {
-        add(pupil);
-        for (Task task : tasks) {
-            journal.get(pupil).putIfAbsent(new StableAnswer(task), Mark.UNMARKED);
-        }
-        return this;
+    public boolean contains(@NotNull Pupil pupil) {
+        return journal.keySet().contains(pupil);
     }
 
     @Override
@@ -118,21 +154,8 @@ public class ClassJournal implements Journal {
     }
 
     @Override
-    public Journal setMark(@NotNull Pupil pupil, @NotNull Map<Answer, Mark> marks) {
-        marks.keySet().forEach(x -> setMark(pupil, x, marks.get(x)));
-        return this;
-    }
-
-    @Override
-    public Journal setMark(@NotNull Pupil pupil, @NotNull Answer answer, @NotNull Mark mark) {
-        add(pupil);
-        journal.get(pupil).put(answer, mark);
-        return this;
-    }
-
-    @Override
     public Journal clearTasksFor(@NotNull Pupil pupil) {
-        journal.put(pupil, new HashMap<>());
+        journal.put(pupil, new TreeSet<>());
         return this;
     }
 
@@ -154,7 +177,7 @@ public class ClassJournal implements Journal {
                 .forEach(
                         (x, y) -> sj
                                 .add(x.toString())
-                                .add("\t" + y));
+                                .add("\t" + y.toString()));
         return "Master " + master + ":\n" + sj;
     }
 }

@@ -1,13 +1,11 @@
 package ua.kiev.prog.school.instances;
 
+import org.jetbrains.annotations.NotNull;
 import ua.kiev.prog.school.interfaces.Answer;
-import ua.kiev.prog.school.interfaces.Task;
+import ua.kiev.prog.school.interfaces.Question;
 import ua.kiev.prog.school.interfaces.Teacher;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
@@ -19,8 +17,7 @@ public class RandomTeacher extends NamedPerson implements Teacher {
     }
 
     @Override
-    public Mark mark(Answer answer) {
-
+    public @NotNull Mark mark(@NotNull Question question, @NotNull Answer answer) {
         switch (new Random().nextInt(12) + 1) {
             default:
                 return Mark.F;
@@ -39,21 +36,21 @@ public class RandomTeacher extends NamedPerson implements Teacher {
             case 11:
             case 12:
                 return Mark.A;
-
         }
     }
 
     @Override
-    public Map<Answer, Mark> mark(Set<Answer> answers) {
-        Map<Answer, Mark> marks = new HashMap<>();
-        for (Answer answer : answers) {
-            marks.put(answer, mark(answer));
-        }
-        return marks;
-    }
+    public @NotNull Question ask(@NotNull String question) {
+        return new Question() {
+            @Override
+            public String getQuestion() {
+                return question;
+            }
 
-    @Override
-    public Task createTask(String taskText) {
-        return new SimpleTask(taskText);
+            @Override
+            public int compareTo(Question o) {
+                return question.compareTo(o.getQuestion());
+            }
+        };
     }
 }
