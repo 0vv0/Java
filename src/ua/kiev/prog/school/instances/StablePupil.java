@@ -1,10 +1,9 @@
 package ua.kiev.prog.school.instances;
 
 import org.jetbrains.annotations.NotNull;
-import ua.kiev.prog.school.interfaces.Answer;
 import ua.kiev.prog.school.interfaces.Person;
 import ua.kiev.prog.school.interfaces.Pupil;
-import ua.kiev.prog.school.interfaces.Question;
+import ua.kiev.prog.school.interfaces.Task;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
@@ -28,8 +27,8 @@ public class StablePupil extends NamedPerson implements Pupil {
     }
 
     @Override
-    public Answer giveAnswer(@NotNull Question question) {
-        return new Answer() {
+    public Task.Answer giveAnswer(@NotNull Task.Question question) {
+        return new Task.Answer() {
             @Override
             public String getAnswer() {
                 return "My stable answer - I KNOW ALL!!!";

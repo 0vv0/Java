@@ -1,10 +1,9 @@
 package ua.kiev.prog.school;
 
-import sun.reflect.generics.tree.Tree;
 import ua.kiev.prog.school.instances.*;
 import ua.kiev.prog.school.interfaces.*;
+import ua.kiev.prog.school.interfaces.Task.Mark;
 
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -20,47 +19,32 @@ class Runner {
         Pupil olesia = new StablePupil("Olesia", "Sergiienko", mom, dad);
         Teacher teacher = new RandomTeacher("Bohdan", "Vanchuhov");
 
-        Question question1 = teacher.ask();
-        Question question2 = teacher.ask("Java is OOP?");
-        Question question3 = teacher.ask("What is the capital of Ukraine?");
+        Task task1 = teacher.giveATask();
+        Task task2 = teacher.giveATask(teacher.ask("Java is OOP"));
+        Task task3 = new SimpleTask(teacher.ask("What is the capital of Ukraine"));
 
         Journal journalOfJavaOOPCourse = new ClassJournal(teacher);
         journalOfJavaOOPCourse.add(oleksii).add(olesia);
 
-        Set<Question> oleksiisQuestions = new TreeSet<>();
-        Set<Question> olesiasQuestions = new TreeSet<>();
+        Set<Task> oleksiisQuestions = new TreeSet<>();
+        Set<Task> olesiasQuestions = new TreeSet<>();
 
-        System.out.println(question1);
-        System.out.println(question2);
-        System.out.println(question3);
-
-        oleksiisQuestions.add(question1);
-        oleksiisQuestions.add(question2);
+        oleksiisQuestions.add(task1);
+        oleksiisQuestions.add(task2);
         System.out.println(oleksiisQuestions);
 
-        olesiasQuestions.add(question1);
-        olesiasQuestions.add(question3);
+        olesiasQuestions.add(task1);
+        olesiasQuestions.add(task3);
         System.out.println(olesiasQuestions);
 
-        journalOfJavaOOPCourse.add(oleksii, oleksiisQuestions);
-        journalOfJavaOOPCourse.add(olesia, olesiasQuestions);
-        System.out.println();
-        System.out.println(journalOfJavaOOPCourse);
+        oleksiisQuestions.forEach(x -> journalOfJavaOOPCourse.add(oleksii, x));
+        olesiasQuestions.forEach(x -> journalOfJavaOOPCourse.add(olesia, x));
 
-        journalOfJavaOOPCourse.setMark(oleksii, oleksii.giveAnswer(question1), teacher.mark(oleksii.giveAnswer(question1)) );
-        System.out.println();
-        System.out.println(journalOfJavaOOPCourse);
-
-        journalOfJavaOOPCourse.setMark(oleksii, oleksii.giveAnswer(question2), teacher.mark(oleksii.giveAnswer(question2)) );
-        System.out.println();
-        System.out.println(journalOfJavaOOPCourse);
-
-        journalOfJavaOOPCourse.add(olesia, olesiasQuestions);
         System.out.println();
         System.out.println(journalOfJavaOOPCourse);
 
 
-        Journal newJournal = journalOfJavaOOPCourse.filterByMark(x -> x == Mark.UNMARKED);
+        Journal newJournal = journalOfJavaOOPCourse.filterByTask(x -> x.getMark() == Mark.UNMARKED);
         System.out.println();
         System.out.println(newJournal);
     }

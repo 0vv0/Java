@@ -1,8 +1,7 @@
 package ua.kiev.prog.school.instances;
 
 import org.jetbrains.annotations.NotNull;
-import ua.kiev.prog.school.interfaces.Answer;
-import ua.kiev.prog.school.interfaces.Question;
+import ua.kiev.prog.school.interfaces.Task;
 import ua.kiev.prog.school.interfaces.Teacher;
 
 import java.util.Random;
@@ -17,40 +16,58 @@ public class RandomTeacher extends NamedPerson implements Teacher {
     }
 
     @Override
-    public @NotNull Mark mark(@NotNull Question question, @NotNull Answer answer) {
+    public @NotNull Task.Mark mark(Task.@NotNull Question question, Task.@NotNull Answer answer) {
+        if (answer.getAnswer().equals("") || answer.getAnswer().equals(Task.DEFAULT_ANSWER)) {
+            return Task.Mark.UNMARKED;
+        }
         switch (new Random().nextInt(12) + 1) {
             default:
-                return Mark.F;
+                return Task.Mark.F;
             case 3:
             case 4:
-                return Mark.E;
+                return Task.Mark.E;
             case 5:
             case 6:
-                return Mark.D;
+                return Task.Mark.D;
             case 7:
             case 8:
-                return Mark.C;
+                return Task.Mark.C;
             case 9:
             case 10:
-                return Mark.B;
+                return Task.Mark.B;
             case 11:
             case 12:
-                return Mark.A;
+                return Task.Mark.A;
         }
     }
 
     @Override
-    public @NotNull Question ask(@NotNull String question) {
-        return new Question() {
+    public @NotNull Task mark(@NotNull Task task) {
+        return task.setMark(mark(task.getQuestion(), task.getAnswer()));
+    }
+
+    @Override
+    public @NotNull Task.Question ask(@NotNull String question) {
+        return new Task.Question() {
             @Override
             public String getQuestion() {
-                return question;
+                return question + "?";
             }
 
             @Override
-            public int compareTo(Question o) {
-                return question.compareTo(o.getQuestion());
+            public String toString() {
+                return getQuestion();
             }
         };
+    }
+
+    @Override
+    public @NotNull Task giveATask() {
+        return giveATask(ask());
+    }
+
+    @Override
+    public @NotNull Task giveATask(Task.Question question) {
+        return new SimpleTask(question);
     }
 }
