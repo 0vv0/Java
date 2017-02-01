@@ -33,6 +33,11 @@ public class StablePupil extends NamedPerson implements Pupil {
             public String getAnswer() {
                 return "My stable answer - I KNOW ALL!!!";
             }
+
+            @Override
+            public String toString() {
+                return getAnswer();
+            }
         };
     }
 

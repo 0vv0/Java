@@ -42,7 +42,7 @@ public class RandomTeacher extends NamedPerson implements Teacher {
     }
 
     @Override
-    public @NotNull Task mark(@NotNull Task task) {
+    public @NotNull Task mark(Task task) {
         return task.setMark(mark(task.getQuestion(), task.getAnswer()));
     }
 

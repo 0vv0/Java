@@ -23,29 +23,31 @@ class Runner {
         Task task2 = teacher.giveATask(teacher.ask("Java is OOP"));
         Task task3 = new SimpleTask(teacher.ask("What is the capital of Ukraine"));
 
-        Journal journalOfJavaOOPCourse = new ClassJournal(teacher);
-        journalOfJavaOOPCourse.add(oleksii).add(olesia);
+        Journal journal = new ClassJournal(teacher);
+        journal.add(oleksii).add(olesia);
 
-        Set<Task> oleksiisQuestions = new TreeSet<>();
-        Set<Task> olesiasQuestions = new TreeSet<>();
+        Set<Task> taskList = new TreeSet<>();
+        taskList.add(task1);
+        taskList.add(task2);
+        taskList.add(task3);
+        System.out.println(taskList);
 
-        oleksiisQuestions.add(task1);
-        oleksiisQuestions.add(task2);
-        System.out.println(oleksiisQuestions);
-
-        olesiasQuestions.add(task1);
-        olesiasQuestions.add(task3);
-        System.out.println(olesiasQuestions);
-
-        oleksiisQuestions.forEach(x -> journalOfJavaOOPCourse.add(oleksii, x));
-        olesiasQuestions.forEach(x -> journalOfJavaOOPCourse.add(olesia, x));
-
+        journal.add(oleksii, taskList);
         System.out.println();
-        System.out.println(journalOfJavaOOPCourse);
+        System.out.println(journal);
 
-
-        Journal newJournal = journalOfJavaOOPCourse.filterByTask(x -> x.getMark() == Mark.UNMARKED);
+        taskList.forEach(x -> x.setAnswer(olesia.giveAnswer(x.getQuestion())));
+        journal.add(olesia, taskList);
         System.out.println();
-        System.out.println(newJournal);
+        System.out.println(journal);
+
+        taskList.forEach(x -> x.setMark(teacher.mark(x).getMark()));
+        journal.add(olesia, taskList);
+        System.out.println();
+        System.out.println(journal);
+
+        Journal newJournal = journal.filterByTask(x -> x.getMark() == Mark.F);
+        System.out.println();
+        System.out.println(newJournal.toList());
     }
 }

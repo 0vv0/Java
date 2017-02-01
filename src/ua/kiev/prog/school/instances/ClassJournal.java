@@ -65,6 +65,11 @@ public final class ClassJournal implements Journal {
     }
 
     @Override
+    public Set<Pupil> toList() {
+        return journal.keySet();
+    }
+
+    @Override
     public Journal add(@NotNull Pupil pupil) {
         journal.putIfAbsent(pupil, new TreeSet<>());
         return this;
@@ -87,14 +92,18 @@ public final class ClassJournal implements Journal {
 
     @Override
     public Journal add(@NotNull Pupil pupil, @NotNull Task task) {
-        if(!contains(pupil)){add(pupil);}
+        if (!contains(pupil)) {
+            add(pupil);
+        }
         journal.get(pupil).add(task);
         return this;
     }
 
     @Override
     public Journal add(@NotNull Pupil pupil, @NotNull Set<Task> tasks) {
-        if(!contains(pupil)){add(pupil);}
+        if (!contains(pupil)) {
+            add(pupil);
+        }
         journal.get(pupil).addAll(tasks);
         return this;
     }
@@ -122,10 +131,14 @@ public final class ClassJournal implements Journal {
     public Journal filterByTask(Predicate<Task> filter) {
         Journal j = new ClassJournal(master);
         for (Pupil pupil : journal.keySet()) {
-            j.add(pupil, journal.get(pupil).stream()
+            Set<Task> tasks = journal.get(pupil).stream()
                     .filter(filter)
-                    .collect(Collectors.toSet()));
+                    .collect(Collectors.toSet());
+            if (tasks.size() > 0) {
+                j.add(pupil, tasks);
+            }
         }
+
         return j;
     }
 

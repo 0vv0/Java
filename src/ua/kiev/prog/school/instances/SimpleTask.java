@@ -60,6 +60,6 @@ public class SimpleTask implements Task {
 
     @Override
     public String toString() {
-        return getQuestion() + "(" + getMark() + ", " + getAnswer();
+        return getQuestion() + "(" + getMark() + ", " + getAnswer() + ")";
     }
 }

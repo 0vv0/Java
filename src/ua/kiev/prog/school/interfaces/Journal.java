@@ -13,6 +13,8 @@ public interface Journal extends Iterable<Pupil> {
 
     Map<Task.Question, Task.Mark> showMarks(@NotNull Pupil pupil);
 
+    Set<Pupil> toList();
+
     Teacher getMaster();
 
     Journal setMaster(@NotNull Teacher teacher);
