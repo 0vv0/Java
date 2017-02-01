@@ -1,5 +1,7 @@
 package ua.kiev.prog.school.interfaces;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Created by admin on 1/31/2017.
  */
@@ -25,12 +27,14 @@ public interface Task extends Comparable<Task> {
 
     Task setAnswer(Answer answer);
 
-    Mark getMark();
+    default Mark getMark() {
+        return DEFAULT_MARK;
+    }
 
     Task setMark(Mark mark);
 
     @Override
-    default int compareTo(Task o) {
+    default int compareTo(@NotNull Task o) {
         return getQuestion().compareTo(o.getQuestion());
     }
 
@@ -42,7 +46,7 @@ public interface Task extends Comparable<Task> {
         String getQuestion();
 
         @Override
-        default int compareTo(Question o) {
+        default int compareTo(@NotNull Question o) {
             return getQuestion().compareTo(o.getQuestion());
         }
     }
