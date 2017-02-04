@@ -4,15 +4,20 @@ package ua.kiev.prog.school.instances;
 import org.jetbrains.annotations.NotNull;
 import ua.kiev.prog.school.interfaces.Task;
 
+import java.io.*;
+
 /**
  * Created by Oleksii.Sergiienko on 1/23/2017.
  */
 public class SimpleTask implements Task {
+    private static final long serialVersionUID = 1L;
+
     private final Question question;
     private Answer answer = DEFAULT_ANSWER;
     private Mark mark = Mark.UNMARKED;
 
     public SimpleTask(@NotNull Question question) {
+        assert question != null;
         this.question = question;
     }
 
@@ -55,11 +60,46 @@ public class SimpleTask implements Task {
 
     @Override
     public int hashCode() {
-        return getQuestion() != null ? getQuestion().hashCode() : 0;
+        return getQuestion().hashCode();
     }
 
     @Override
     public String toString() {
         return getQuestion() + "(" + getMark() + ", " + getAnswer() + ")";
+    }
+
+    @Override
+    public void write() throws IOException {
+        write(new File(getSaveFileName()));
+    }
+
+    @Override
+    public void write(File file) throws IOException {
+        new BufferedWriter(new FileWriter(
+                new File(file.getName() + ".q"))).write(question.getQuestion());
+        new BufferedWriter(new FileWriter(
+                new File(file.getName() + ".a"))).write(answer.getAnswer());
+        new BufferedWriter(new FileWriter(file)).write(mark.name());
+    }
+
+    @Override
+    public Task read(File file) throws IOException {
+        String markString = new BufferedReader(new FileReader(new File(getSaveFileName()))).readLine();
+        String question = new BufferedReader(new FileReader(new File(file.getName() + ".q")))
+                .readLine();
+        String answer = new BufferedReader(new FileReader(new File(file.getName() + ".a")))
+                .readLine();
+
+        return new SimpleTask(new Question() {
+            @Override
+            public String getQuestion() {
+                return question;
+            }
+        }).setAnswer(new Answer() {
+            @Override
+            public String getAnswer() {
+                return answer;
+            }
+        }).setMark(Mark.valueOf(markString));
     }
 }

@@ -2,6 +2,7 @@ package ua.kiev.prog.school.interfaces;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -9,7 +10,7 @@ import java.util.function.Predicate;
 /**
  * Created by admin on 1/23/2017.
  */
-public interface Journal extends Iterable<Pupil> {
+public interface Journal extends Iterable<Pupil>, Serializable {
 
     Map<Task.Question, Task.Mark> showMarks(@NotNull Pupil pupil);
 

@@ -10,6 +10,7 @@ import java.util.Random;
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
 public class RandomTeacher extends NamedPerson implements Teacher {
+    private static final long serialVersionUID = 1L;
 
     public RandomTeacher(String name, String surname) {
         super(name, surname);

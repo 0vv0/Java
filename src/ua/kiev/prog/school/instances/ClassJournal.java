@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
 public final class ClassJournal implements Journal {
+    private static final long serialVersionUID = 1L;
+
     private Teacher master;
     private Map<Pupil, Set<Task>> journal = new HashMap<>();
 
@@ -180,4 +182,5 @@ public final class ClassJournal implements Journal {
                                 .add("\t" + y.toString()));
         return "Master " + master + ":\n" + sj;
     }
+
 }
