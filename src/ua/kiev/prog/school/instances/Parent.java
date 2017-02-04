@@ -1,10 +1,10 @@
 package ua.kiev.prog.school.instances;
 
 
-import ua.kiev.prog.school.interfaces.Person;
 import ua.kiev.prog.school.interfaces.ResultViewer;
 
 import java.io.*;
+import java.util.StringJoiner;
 
 /**
  * Created by Oleksii.Sergiienko on 12/27/2016.
@@ -20,30 +20,27 @@ public final class Parent extends NamedPerson implements ResultViewer {
     }
 
     @Override
-    public Person read(File file) throws IOException {
+    public Parent read(File file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String buffer = br.readLine();
         br.close();
         String[] arr = buffer.split(";");
-        if (arr.length != 3) {
+        if (arr.length < 3) {
             throw new IOException("File format is incorrect");
         }
-        return new Parent(arr[0], arr[1], arr[2]);
-    }
-
-    @Override
-    public void write() throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(
-                new File(getSaveFileName())));
-        String buffer = getName() + ";" + getSurname() + ";" + getAddress();
-        bw.write(buffer);
-        bw.newLine();
-        bw.close();
+        StringJoiner sj = new StringJoiner("");
+        for (int i = 2; i < arr.length; i++) {
+            sj.add(arr[i]);
+        }
+        return new Parent(arr[0], arr[1], sj.toString());
     }
 
     @Override
     public void write(File file) throws IOException {
         super.write(file);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+        bw.append(";" + address);
+        bw.close();
     }
 
     public String getAddress() {

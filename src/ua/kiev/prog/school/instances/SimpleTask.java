@@ -2,14 +2,16 @@ package ua.kiev.prog.school.instances;
 
 
 import org.jetbrains.annotations.NotNull;
+import ua.kiev.prog.school.interfaces.Readable;
 import ua.kiev.prog.school.interfaces.Task;
+import ua.kiev.prog.school.interfaces.Writeable;
 
 import java.io.*;
 
 /**
  * Created by Oleksii.Sergiienko on 1/23/2017.
  */
-public class SimpleTask implements Task {
+public class SimpleTask implements Task, Writeable, Readable<SimpleTask> {
     private static final long serialVersionUID = 1L;
 
     private final Question question;
@@ -69,11 +71,6 @@ public class SimpleTask implements Task {
     }
 
     @Override
-    public void write() throws IOException {
-        write(new File(getSaveFileName()));
-    }
-
-    @Override
     public void write(File file) throws IOException {
         new BufferedWriter(new FileWriter(
                 new File(file.getName() + ".q"))).write(question.getQuestion());
@@ -83,23 +80,26 @@ public class SimpleTask implements Task {
     }
 
     @Override
-    public Task read(File file) throws IOException {
+    public SimpleTask read(File file) throws IOException {
         String markString = new BufferedReader(new FileReader(new File(getSaveFileName()))).readLine();
         String question = new BufferedReader(new FileReader(new File(file.getName() + ".q")))
                 .readLine();
         String answer = new BufferedReader(new FileReader(new File(file.getName() + ".a")))
                 .readLine();
-
-        return new SimpleTask(new Question() {
+        Question q = new Question() {
             @Override
             public String getQuestion() {
                 return question;
             }
-        }).setAnswer(new Answer() {
+        };
+        Answer a = new Answer() {
             @Override
             public String getAnswer() {
                 return answer;
             }
-        }).setMark(Mark.valueOf(markString));
+        };
+        SimpleTask st = new SimpleTask(q);
+        st.setAnswer(a).setMark(Mark.valueOf(markString));
+        return st;
     }
 }

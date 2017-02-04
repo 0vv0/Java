@@ -1,13 +1,15 @@
 package ua.kiev.prog.school.instances;
 
 import ua.kiev.prog.school.interfaces.Person;
+import ua.kiev.prog.school.interfaces.Readable;
+import ua.kiev.prog.school.interfaces.Writeable;
 
 import java.io.*;
 
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
-public class NamedPerson implements Person {
+public class NamedPerson implements Person, Serializable, Writeable, Readable<NamedPerson> {
     private static final long serialVersionUID = 1L;
 
     private String name = "";
@@ -54,7 +56,7 @@ public class NamedPerson implements Person {
     }
 
     @Override
-    public Person read(File file) throws IOException {
+    public NamedPerson read(File file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String buffer = br.readLine();
         br.close();
@@ -63,11 +65,6 @@ public class NamedPerson implements Person {
             throw new IOException("Incorrect file format");
         }
         return new NamedPerson(arr[0], arr[1]);
-    }
-
-    @Override
-    public void write() throws IOException {
-        write(new File(getSaveFileName()));
     }
 
     @Override

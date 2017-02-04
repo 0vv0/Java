@@ -1,11 +1,12 @@
 package ua.kiev.prog.school.instances;
 
 import org.jetbrains.annotations.NotNull;
-import ua.kiev.prog.school.interfaces.Journal;
-import ua.kiev.prog.school.interfaces.Pupil;
-import ua.kiev.prog.school.interfaces.Task;
-import ua.kiev.prog.school.interfaces.Teacher;
+import ua.kiev.prog.school.interfaces.*;
+import ua.kiev.prog.school.interfaces.Readable;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
-public final class ClassJournal implements Journal {
+public final class ClassJournal implements Journal, Serializable, Writeable, Readable<Journal> {
     private static final long serialVersionUID = 1L;
 
     private Teacher master;
@@ -183,4 +184,13 @@ public final class ClassJournal implements Journal {
         return "Master " + master + ":\n" + sj;
     }
 
+    @Override
+    public Journal read(File file) throws IOException {
+        return null;
+    }
+
+    @Override
+    public void write(File file) throws IOException {
+
+    }
 }

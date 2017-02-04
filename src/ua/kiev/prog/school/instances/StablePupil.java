@@ -25,7 +25,7 @@ public final class StablePupil extends NamedPerson implements Pupil {
     }
 
     @Override
-    public Person read(File file) throws IOException {
+    public StablePupil read(File file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String[] fileNames = br.readLine().split(";");
         assert fileNames.length == 3;
@@ -54,8 +54,8 @@ public final class StablePupil extends NamedPerson implements Pupil {
     public void write(File file) throws IOException {
         String name = file.getName();
         super.write(new File(name + ".sp"));
-        mother.write(new File(name + ".mom"));
-        father.write(new File(name + ".dad"));
+        ((Parent) mother).write(new File(name + ".mom"));
+        ((Parent) father).write(new File(name + ".dad"));
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
         bw.write(name + ".sp" + ";" + name + ".mom" + ";" + name + ".dad");
         bw.close();
