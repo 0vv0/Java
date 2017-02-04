@@ -72,19 +72,25 @@ public class SimpleTask implements Task, Writeable, Readable<SimpleTask> {
 
     @Override
     public void write(File file) throws IOException {
-        new BufferedWriter(new FileWriter(
-                new File(file.getName() + ".q"))).write(question.getQuestion());
-        new BufferedWriter(new FileWriter(
-                new File(file.getName() + ".a"))).write(answer.getAnswer());
-        new BufferedWriter(new FileWriter(file)).write(mark.name());
+        BufferedWriter bw = new BufferedWriter(new FileWriter(
+                new File(file.getAbsolutePath() + ".q")));
+        bw.write(question.getQuestion());
+        bw.close();
+        bw = new BufferedWriter(new FileWriter(
+                new File(file.getAbsolutePath() + ".a")));
+        bw.write(answer.getAnswer());
+        bw.close();
+        bw = new BufferedWriter(new FileWriter(file));
+        bw.write(mark.name());
+        bw.close();
     }
 
     @Override
     public SimpleTask read(File file) throws IOException {
         String markString = new BufferedReader(new FileReader(new File(getSaveFileName()))).readLine();
-        String question = new BufferedReader(new FileReader(new File(file.getName() + ".q")))
+        String question = new BufferedReader(new FileReader(new File(file.getAbsolutePath() + ".q")))
                 .readLine();
-        String answer = new BufferedReader(new FileReader(new File(file.getName() + ".a")))
+        String answer = new BufferedReader(new FileReader(new File(file.getAbsolutePath() + ".a")))
                 .readLine();
         Question q = new Question() {
             @Override

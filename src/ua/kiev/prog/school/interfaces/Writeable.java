@@ -7,6 +7,7 @@ import java.io.IOException;
  * Created by Oleksii.Sergiienko on 2/4/2017.
  */
 public interface Writeable {
+    String DEFAULT_DIRECTORY = "files/";
     default void write() throws IOException {
         write(new File(getSaveFileName()));
     }
@@ -14,6 +15,10 @@ public interface Writeable {
     void write(File file) throws IOException;
 
     default String getSaveFileName() {
-        return hashCode() + "." + getClass().getSimpleName();
+        return getDirectory() + hashCode() + "." + getClass().getSimpleName();
+    }
+
+    default String getDirectory() {
+        return DEFAULT_DIRECTORY;
     }
 }

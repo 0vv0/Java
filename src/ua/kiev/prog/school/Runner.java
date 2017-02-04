@@ -4,6 +4,7 @@ import ua.kiev.prog.school.instances.*;
 import ua.kiev.prog.school.interfaces.*;
 import ua.kiev.prog.school.interfaces.Task.Mark;
 
+import java.io.IOException;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -11,7 +12,7 @@ import java.util.TreeSet;
  * Created by Oleksii.Sergiienko on 12/27/2016.
  */
 class Runner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Person mom = new Parent("Silvia", "Sergiienko", "");
         Person dad = new Parent("Nicolai", "Sergiienko", "");
@@ -22,6 +23,10 @@ class Runner {
         Task task1 = teacher.giveATask();
         Task task2 = teacher.giveATask(teacher.ask("Java is OOP"));
         Task task3 = new SimpleTask(teacher.ask("What is the capital of Ukraine"));
+
+        ((SimpleTask) task1).write();
+        ((SimpleTask) task2).write();
+        ((SimpleTask) task3).write();
 
         Journal journal = new ClassJournal(teacher);
         journal.add(oleksii).add(olesia);
@@ -49,5 +54,7 @@ class Runner {
         Journal newJournal = journal.filterByTask(x -> x.getMark() == Mark.F);
         System.out.println();
         System.out.println(newJournal.toList());
+
+
     }
 }
