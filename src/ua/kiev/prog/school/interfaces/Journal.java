@@ -1,7 +1,5 @@
 package ua.kiev.prog.school.interfaces;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -11,33 +9,29 @@ import java.util.function.Predicate;
  */
 public interface Journal extends Iterable<Pupil> {
 
-    Map<Task.Question, Task.Mark> showMarks(@NotNull Pupil pupil);
+    Map<Task.Question, Task.Mark> showMarks(Pupil pupil);
 
     Set<Pupil> toList();
 
     Teacher getMaster();
 
-    Journal setMaster(@NotNull Teacher teacher);
+    Journal setMaster(Teacher teacher);
 
-    Journal add(@NotNull Pupil pupil);
+    Journal add(Pupil pupil);
 
-    Journal add(@NotNull Task.Question question);
+    Journal add(Pupil pupil, Task task);
 
-    Journal add(@NotNull Set<Task.Question> question);
+    Journal add(Pupil pupil, Set<Task> tasks);
 
-    Journal add(@NotNull Pupil pupil, @NotNull Task.Question question);
+    Journal add(Task task);
 
-    Journal add(@NotNull Pupil pupil, @NotNull Task task);
+    Journal remove(Pupil pupil);
 
-    Journal add(@NotNull Pupil pupil, @NotNull Set<Task> task);
-
-    Journal remove(@NotNull Pupil pupil);
-
-    Journal clearTasksFor(@NotNull Pupil pupil);
+    Journal clearTasksFor(Pupil pupil);
 
     Journal filterByPupil(Predicate<Pupil> filter);
 
     Journal filterByTask(Predicate<Task> filter);
 
-    boolean contains(@NotNull Pupil pupil);
+    boolean contains(Pupil pupil);
 }

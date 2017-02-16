@@ -24,9 +24,6 @@ class Runner {
         Task task2 = teacher.giveATask(teacher.ask("Java is OOP"));
         Task task3 = new SimpleTask(teacher.ask("What is the capital of Ukraine"));
 
-        ((SimpleTask) task1).write();
-        ((SimpleTask) task2).write();
-        ((SimpleTask) task3).write();
 
         Journal journal = new ClassJournal(teacher);
         journal.add(oleksii).add(olesia);

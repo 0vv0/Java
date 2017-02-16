@@ -50,7 +50,7 @@ public class Factorial implements Runnable {
     }
 
     public void write(BigInteger factorial) throws IOException {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(fileName)))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             bw.write(factorial.toString());
         }
     }

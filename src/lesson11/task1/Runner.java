@@ -8,7 +8,7 @@ import java.time.LocalTime;
  */
 public class Runner {
     private static final int K = 1000;
-    private static final int N = 100;
+    private static final int N = 50;
 
     public static void main(String[] args) throws IOException, InterruptedException {
         parallel();

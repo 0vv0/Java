@@ -1,11 +1,10 @@
 package ua.kiev.prog.school.instances;
 
-import org.jetbrains.annotations.NotNull;
-import ua.kiev.prog.school.interfaces.*;
-import ua.kiev.prog.school.interfaces.Readable;
+import ua.kiev.prog.school.interfaces.Journal;
+import ua.kiev.prog.school.interfaces.Pupil;
+import ua.kiev.prog.school.interfaces.Task;
+import ua.kiev.prog.school.interfaces.Teacher;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 import java.util.function.Consumer;
@@ -15,17 +14,17 @@ import java.util.stream.Collectors;
 /**
  * Created by Oleksii.Sergiienko on 1/6/2017.
  */
-public final class ClassJournal implements Journal, Serializable, Writeable, Readable<Journal> {
+public final class ClassJournal implements Journal, Serializable {
     private static final long serialVersionUID = 1L;
 
     private Teacher master;
     private Map<Pupil, Set<Task>> journal = new HashMap<>();
 
-    public ClassJournal(@NotNull Teacher master) {
+    public ClassJournal(Teacher master) {
         this.master = master;
     }
 
-    private boolean isAlreadyAsked(@NotNull Pupil pupil, @NotNull Task.Question question) {
+    private boolean isAlreadyAsked(Pupil pupil, Task.Question question) {
         if (contains(pupil)) {
             for (Task mt : journal.get(pupil)) {
                 if (mt.getQuestion().equals(question)) {
@@ -59,7 +58,7 @@ public final class ClassJournal implements Journal, Serializable, Writeable, Rea
     }
 
     @Override
-    public Map<Task.Question, Task.Mark> showMarks(@NotNull Pupil pupil) {
+    public Map<Task.Question, Task.Mark> showMarks(Pupil pupil) {
         Map<Task.Question, Task.Mark> marks = new TreeMap<>();
         if (contains(pupil)) {
             journal.get(pupil).forEach(x -> marks.put(x.getQuestion(), x.getMark()));
@@ -73,28 +72,14 @@ public final class ClassJournal implements Journal, Serializable, Writeable, Rea
     }
 
     @Override
-    public Journal add(@NotNull Pupil pupil) {
+    public Journal add(Pupil pupil) {
         journal.putIfAbsent(pupil, new TreeSet<>());
         return this;
     }
 
-    @Override
-    public Journal add(@NotNull Pupil pupil, @NotNull Task.Question question) {
-        if (contains(pupil)) {
-            for (Task mt : journal.get(pupil)) {
-                if (mt.getQuestion().equals(question)) {
-                    return this;
-                }
-            }
-        } else {
-            add(pupil);
-        }
-        journal.get(pupil).add(new SimpleTask(question));
-        return this;
-    }
 
     @Override
-    public Journal add(@NotNull Pupil pupil, @NotNull Task task) {
+    public Journal add(Pupil pupil, Task task) {
         if (!contains(pupil)) {
             add(pupil);
         }
@@ -103,7 +88,7 @@ public final class ClassJournal implements Journal, Serializable, Writeable, Rea
     }
 
     @Override
-    public Journal add(@NotNull Pupil pupil, @NotNull Set<Task> tasks) {
+    public Journal add(Pupil pupil, Set<Task> tasks) {
         if (!contains(pupil)) {
             add(pupil);
         }
@@ -112,14 +97,8 @@ public final class ClassJournal implements Journal, Serializable, Writeable, Rea
     }
 
     @Override
-    public Journal add(@NotNull Task.Question question) {
-        journal.keySet().forEach(x -> add(x, question));
-        return this;
-    }
-
-    @Override
-    public Journal add(@NotNull Set<Task.Question> questions) {
-        questions.forEach(x -> add(x));
+    public Journal add(Task task) {
+        journal.entrySet().forEach(x -> x.getValue().add(task));
         return this;
     }
 
@@ -146,18 +125,18 @@ public final class ClassJournal implements Journal, Serializable, Writeable, Rea
     }
 
     @Override
-    public boolean contains(@NotNull Pupil pupil) {
+    public boolean contains(Pupil pupil) {
         return journal.keySet().contains(pupil);
     }
 
     @Override
-    public Journal remove(@NotNull Pupil pupil) {
+    public Journal remove(Pupil pupil) {
         journal.remove(pupil);
         return this;
     }
 
     @Override
-    public Journal clearTasksFor(@NotNull Pupil pupil) {
+    public Journal clearTasksFor(Pupil pupil) {
         journal.put(pupil, new TreeSet<>());
         return this;
     }
@@ -168,7 +147,7 @@ public final class ClassJournal implements Journal, Serializable, Writeable, Rea
     }
 
     @Override
-    public Journal setMaster(@NotNull Teacher teacher) {
+    public Journal setMaster(Teacher teacher) {
         this.master = teacher;
         return this;
     }
@@ -182,15 +161,5 @@ public final class ClassJournal implements Journal, Serializable, Writeable, Rea
                                 .add(x.toString())
                                 .add("\t" + y.toString()));
         return "Master " + master + ":\n" + sj;
-    }
-
-    @Override
-    public Journal read(File file) throws IOException {
-        return null;
-    }
-
-    @Override
-    public void write(File file) throws IOException {
-
     }
 }

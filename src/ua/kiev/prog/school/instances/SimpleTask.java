@@ -2,16 +2,12 @@ package ua.kiev.prog.school.instances;
 
 
 import org.jetbrains.annotations.NotNull;
-import ua.kiev.prog.school.interfaces.Readable;
 import ua.kiev.prog.school.interfaces.Task;
-import ua.kiev.prog.school.interfaces.Writeable;
-
-import java.io.*;
 
 /**
  * Created by Oleksii.Sergiienko on 1/23/2017.
  */
-public class SimpleTask implements Task, Writeable, Readable<SimpleTask> {
+public class SimpleTask implements Task {
     private static final long serialVersionUID = 1L;
 
     private final Question question;
@@ -68,44 +64,5 @@ public class SimpleTask implements Task, Writeable, Readable<SimpleTask> {
     @Override
     public String toString() {
         return getQuestion() + "(" + getMark() + ", " + getAnswer() + ")";
-    }
-
-    @Override
-    public void write(File file) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(
-                new File(file.getAbsolutePath() + ".q")));
-        bw.write(question.getQuestion());
-        bw.close();
-        bw = new BufferedWriter(new FileWriter(
-                new File(file.getAbsolutePath() + ".a")));
-        bw.write(answer.getAnswer());
-        bw.close();
-        bw = new BufferedWriter(new FileWriter(file));
-        bw.write(mark.name());
-        bw.close();
-    }
-
-    @Override
-    public SimpleTask read(File file) throws IOException {
-        String markString = new BufferedReader(new FileReader(new File(getSaveFileName()))).readLine();
-        String question = new BufferedReader(new FileReader(new File(file.getAbsolutePath() + ".q")))
-                .readLine();
-        String answer = new BufferedReader(new FileReader(new File(file.getAbsolutePath() + ".a")))
-                .readLine();
-        Question q = new Question() {
-            @Override
-            public String getQuestion() {
-                return question;
-            }
-        };
-        Answer a = new Answer() {
-            @Override
-            public String getAnswer() {
-                return answer;
-            }
-        };
-        SimpleTask st = new SimpleTask(q);
-        st.setAnswer(a).setMark(Mark.valueOf(markString));
-        return st;
     }
 }
